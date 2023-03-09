@@ -1,14 +1,16 @@
 <?php 
 
-    use Controller\CinemaController;
+    use Controller\MoviesController;
     use Controller\HomeController;
+    use Controller\ActorController;
 
     spl_autoload_register(function ($class_name) {
         include $class_name . '.php';
     });
 
-    $ctrlCinema = new CinemaController();
+    $ctrlMovies = new MoviesController();
     $ctrlHome = new HomeController();
+    $ctrlActors = new ActorController();
 
 
 
@@ -17,11 +19,19 @@
         switch($_GET["action"]) {
 
             case "listMovies":
-                $ctrlCinema->listMovies();
+                $ctrlMovies->listMovies();
                 break;
-            case "actorListMovies":
-                $ctrlCinema->listActorMovies();
+            case "movieDetails":
+                $ctrlMovies->movieDetails($_GET["id"]);
                 break;
+
+            case "listActors":
+                $ctrlActors->listActors();
+                break;
+
+            case "actorDetails":
+                $ctrlActors->actorDetails($_GET["id"]);
+
 
         }
     }

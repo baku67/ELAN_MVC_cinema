@@ -4,8 +4,10 @@
     ob_start();
 ?>
 
-    <p>TEST</p>
-    <a href="index.php?action=listMovies">VOIR LA LISTE DES FILMS</a>
+    <a href="index.php?action=listMovies">Voir les films disponibles</a>
+    <br>
+    <a href="index.php?action=listActors">Voir la liste des acteurs</a>
+
 
 <?php 
     $contenu = ob_get_clean();
