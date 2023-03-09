@@ -1,9 +1,9 @@
 <?php ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> films</p>
+<p>Il y a <?= $request->rowCount() ?> films</p>
 
 <?php
-    foreach($requete->fetchAll() as $movie) {
+    foreach($request->fetchAll() as $movie) {
     ?>
         <br><p><?= $movie["movie_title"] ?></p>
 

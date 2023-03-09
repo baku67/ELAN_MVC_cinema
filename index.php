@@ -1,12 +1,14 @@
 <?php 
 
     use Controller\CinemaController;
+    use Controller\HomeController;
 
     spl_autoload_register(function ($class_name) {
         include $class_name . '.php';
     });
 
     $ctrlCinema = new CinemaController();
+    $ctrlHome = new HomeController();
 
 
 
@@ -23,3 +25,10 @@
 
         }
     }
+    else {
+        $ctrlHome->getHomepage();
+    }
+
+?>
+
+
