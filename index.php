@@ -4,6 +4,7 @@
     use Controller\HomeController;
     use Controller\ActorController;
     use Controller\DirectorController;
+    use Controller\GenreController;
 
     spl_autoload_register(function ($class_name) {
         include $class_name . '.php';
@@ -13,6 +14,7 @@
     $ctrlHome = new HomeController();
     $ctrlActors = new ActorController();
     $ctrlDirector = new DirectorController();
+    $ctrlGenre = new GenreController();
 
 
 
@@ -43,7 +45,13 @@
                 $ctrlDirector->directorDetails($_GET["id"]);
                 break;
 
-            
+            case "listGenre":
+                $ctrlGenre->listGenre();
+                break;
+
+            case "genreFilter":
+                $ctrlGenre->genreFilter($_GET["id"]);
+                break;
         }
     }
     else {
