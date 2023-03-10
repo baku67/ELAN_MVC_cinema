@@ -47,9 +47,9 @@
     <?php 
     if(isset($_SESSION["filters"])) {
         // [1]: filterLabel
-        foreach($_SESSION["filters"][0] as $filter)
+        foreach($_SESSION["filters"] as $filter)
         ?>
-            <span><?= ucfirst($filter) ?></span>
+            <span class="filterActiv"><?= ucfirst($filter["filterLabel"]) ?><a href="index.php?action=removeFilter&id=<?= $filter["filterId"] ?>" class="removeFilter">&times;</a></span>
         <?php
     }
     else {

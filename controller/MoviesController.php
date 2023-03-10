@@ -21,6 +21,7 @@
         }
 
         public function listMoviesFiltered($filterId, $filterLabel) {
+            
             $newFilter = [
                 "filterId" => $filterId, 
                 "filterLabel" => $filterLabel
@@ -51,6 +52,21 @@
                 FROM movie_genre
             ");
             require "view/listMovies.php";
+        }
+
+        public function removeFilter($filterId) {
+            // $_SESSION["filters"][0]
+
+            // Doc: https://stackoverflow.com/questions/369602/deleting-an-element-from-an-array-in-php
+            $array = [0 => "a", 1 => "b", 2 => "c"];
+            $array = \array_filter($array, static function ($element) {
+                return $element !== "b";
+                //                   ↑
+                // Array value which you want to delete
+            });
+
+            // A adapter car suppr 1 filtre et il peut en rester
+            listMovies();
         }
 
         public function movieDetails($movieId) {
