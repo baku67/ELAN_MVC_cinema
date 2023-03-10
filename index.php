@@ -1,5 +1,7 @@
 <?php 
 
+    session_start();
+
     use Controller\MoviesController;
     use Controller\HomeController;
     use Controller\ActorController;
@@ -26,7 +28,7 @@
                 $ctrlMovies->listMovies();
                 break;
             case "listMoviesFiltered":
-                $ctrlMovies->listMoviesFiltered($_GET["filter"]);
+                $ctrlMovies->listMoviesFiltered($_GET["filterId"], $_GET["filterLabel"]);
                 break;
             case "movieDetails":
                 $ctrlMovies->movieDetails($_GET["id"]);
@@ -58,6 +60,7 @@
         }
     }
     else {
+        session_destroy();
         $ctrlHome->getHomepage();
     }
 

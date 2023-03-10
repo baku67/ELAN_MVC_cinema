@@ -20,7 +20,8 @@
             require "view/listMovies.php";
         }
 
-        public function listMoviesFiltered($filters) {
+        public function listMoviesFiltered($filterId, $filterLabel) {
+            $_SESSION["filters"][] = [$filterId, $filterLabel];
             $pdo = Connect::seConnecter();
             $request = $pdo->prepare("
                 SELECT m.movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
@@ -32,7 +33,7 @@
                 WHERE mg.movieGenre_id = :movieGenreId
             ");
             $request->execute([
-                "movieGenreId" => $filters
+                "movieGenreId" => $filterId
             ]);
             $requestGenre = $pdo->query("
                 SELECT movieGenre_id, movieGenre_label 

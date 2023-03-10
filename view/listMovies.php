@@ -1,26 +1,62 @@
 <?php ob_start(); ?>
 
 <p>Il y a <?= $request->rowCount() ?> films disponibles</p>
+<a href="index.php">Revenir à l'accueil</a>
 
     <p>Filtrer par genre</p>
-    <ul id="movieFilterGenreList">
-        <!-- For each genre créer le bouton filtre (+localstorage pour garder et cumuler ?) -->
-        <?php 
-        foreach($requestGenre->fetchAll() as $genre) {
-        ?>
-            <li><a href="index.php?action=listMoviesFiltered&filter=<?= $genre["movieGenre_id"] ?>" onclick=addFilterLocalStrg()><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
-        <?php
-        }
-        ?>
-    </ul>
-
-    <script>
-        window.onload() = function() {
-            function addFilterLocalStrg() {
-
+    <?php 
+    if (!isset($_SESSION["filters"])) {
+    ?>
+        <ul id="movieFilterGenreList">
+            <!-- For each genre créer le bouton filtre (+localstorage pour garder et cumuler ?) -->
+            <?php 
+            foreach($requestGenre->fetchAll() as $genre) {
+            ?>
+                <li><a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
+            <?php
             }
-        }
-    </script>
+            ?>
+        </ul>
+    <?php
+    }
+    else {
+    ?>
+        <ul id="movieFilterGenreList">
+            <!-- For each genre créer le bouton filtre (+localstorage pour garder et cumuler ?) -->
+            <?php 
+            foreach($requestGenre->fetchAll() as $genre) {
+            ?>
+                <?php
+                if(!in_array($genre["movieGenre_id"], $_SESSION["filters"][0])) {
+                ?>
+                <li><a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
+                <?php
+                }
+                ?>
+            <?php
+            }
+            ?>
+        </ul>
+    <?php
+    }
+    ?>
+    
+
+
+    <p>Filtres actifs:</p>
+    <?php 
+    if(isset($_SESSION["filters"])) {
+        // [1]: filterLabel
+        foreach($_SESSION["filters"][0] as $filter)
+        ?>
+            <span><?= ucfirst($filter) ?></span>
+        <?php
+    }
+    else {
+        echo "Aucun filtre actif";
+    }
+    ?>
+
 
 
     <table>
