@@ -5,6 +5,7 @@
 ?>
 
     <p>Réalisateur: <?= $directorDetails["director_name"] ?></p>
+    <a href="javascript:history.go(-1)">Retour</a>
     <br>
     <p>Sexe: <?= $directorDetails["person_gender"] ?></p>
     <p>Date de naissance: <?= $directorDetails["person_birthDate"] ?></p>

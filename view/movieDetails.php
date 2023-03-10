@@ -5,6 +5,7 @@
 ?>
 
     <p>Détail du film: <?= $movieDetails["movie_title"] ?></p>
+    <a href="javascript:history.go(-1)">Retour</a>
     <br>
     <p>Réalisateur: <?= $movieDetails["réalisateur"] ?></p>
     <p>Date de sortie: <?= $movieDetails["sortie"] ?></p>

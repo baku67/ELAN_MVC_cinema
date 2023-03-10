@@ -5,6 +5,7 @@
 ?>
 
     <p>Acteur: <?= $actorDetails["actor_name"] ?></p>
+    <a href="javascript:history.go(-1)">Retour</a>
     <br>
     <p>Sexe: <?= $actorDetails["person_gender"] ?></p>
     <p>Date de naissance: <?= $actorDetails["person_birthDate"] ?></p>

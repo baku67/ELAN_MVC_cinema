@@ -21,17 +21,28 @@
         }
 
         public function listMoviesFiltered($filterId, $filterLabel) {
-            $_SESSION["filters"][] = [$filterId, $filterLabel];
+            $newFilter = [
+                "filterId" => $filterId, 
+                "filterLabel" => $filterLabel
+            ];
+            $_SESSION["filters"][] = $newFilter;
             $pdo = Connect::seConnecter();
-            $request = $pdo->prepare("
-                SELECT m.movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
-                FROM movie m
-                INNER JOIN director d ON m.director_id = d.director_id
-                INNER JOIN person p ON p.person_id = d.person_id
-                INNER JOIN moviegenrelist mgl ON mgl.movie_id = m.movie_id
-                INNER JOIN movie_genre mg ON mg.movieGenre_id = mgl.movieGenre_id
-                WHERE mg.movieGenre_id = :movieGenreId
-            ");
+
+            $requestTxt = 
+            "SELECT m.movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
+            FROM movie m
+            INNER JOIN director d ON m.director_id = d.director_id
+            INNER JOIN person p ON p.person_id = d.person_id
+            INNER JOIN moviegenrelist mgl ON mgl.movie_id = m.movie_id
+            INNER JOIN movie_genre mg ON mg.movieGenre_id = mgl.movieGenre_id
+            WHERE mg.movieGenre_id = :movieGenreId";
+            // ajout des conditions de filtres supplémentaires
+            foreach ($_SESSION["filters"] as $filter) {
+
+            }
+
+            $request = $pdo->prepare($requestTxt);
+
             $request->execute([
                 "movieGenreId" => $filterId
             ]);
