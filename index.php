@@ -37,7 +37,7 @@
                 $ctrlActors->actorDetails($_GET["id"]);
                 break;
 
-            case "listDirector":
+            case "listDirectors":
                 $ctrlDirector->listDirectors();
                 break;
 

@@ -2,6 +2,26 @@
 
 <p>Il y a <?= $request->rowCount() ?> films disponibles</p>
 
+    <p>Filtrer par genre</p>
+    <ul id="movieFilterGenreList">
+        <!-- For each genre créer le bouton filtre (+localstorage pour garder et cumuler ?) -->
+        <?php 
+        foreach($requestGenre->fetchAll() as $genre) {
+        ?>
+            <li><a href="" onclick=addFilterLocalStrg()><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
+        <?php
+        }
+        ?>
+    </ul>
+
+    <script>
+        window.onload() = function() {
+            function addFilterLocalStrg() {
+
+            }
+        }
+    </script>
+
 
     <table>
         <thead>

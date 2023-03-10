@@ -7,6 +7,8 @@
     <a href="index.php?action=listMovies">Voir les films disponibles</a>
     <br>
     <a href="index.php?action=listActors">Voir la liste des acteurs</a>
+    <br>
+    <a href="index.php?action=listDirectors">Voir la liste des réalisateurs</a>
 
 
 <?php 

@@ -7,3 +7,19 @@ table {
     position: relative;
     margin: 0 auto;
 }
+
+#movieFilterGenreList {
+    display: inline-flex;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+#movieFilterGenreList li {
+    margin: 0px 12px;
+
+}
+#movieFilterGenreList a {
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 2px;
+}
