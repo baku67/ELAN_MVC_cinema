@@ -8,7 +8,7 @@
         <?php 
         foreach($requestGenre->fetchAll() as $genre) {
         ?>
-            <li><a href="" onclick=addFilterLocalStrg()><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
+            <li><a href="index.php?action=listMoviesFiltered&filter=<?= $genre["movieGenre_id"] ?>" onclick=addFilterLocalStrg()><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
         <?php
         }
         ?>

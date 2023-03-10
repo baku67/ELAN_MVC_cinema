@@ -25,6 +25,9 @@
             case "listMovies":
                 $ctrlMovies->listMovies();
                 break;
+            case "listMoviesFiltered":
+                $ctrlMovies->listMoviesFiltered($_GET["filter"]);
+                break;
             case "movieDetails":
                 $ctrlMovies->movieDetails($_GET["id"]);
                 break;
