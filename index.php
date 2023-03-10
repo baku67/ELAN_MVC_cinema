@@ -3,6 +3,7 @@
     use Controller\MoviesController;
     use Controller\HomeController;
     use Controller\ActorController;
+    use Controller\DirectorController;
 
     spl_autoload_register(function ($class_name) {
         include $class_name . '.php';
@@ -11,6 +12,7 @@
     $ctrlMovies = new MoviesController();
     $ctrlHome = new HomeController();
     $ctrlActors = new ActorController();
+    $ctrlDirector = new DirectorController();
 
 
 
@@ -31,8 +33,17 @@
 
             case "actorDetails":
                 $ctrlActors->actorDetails($_GET["id"]);
+                break;
 
+            case "listDirector":
+                $ctrlDirector->listDirectors();
+                break;
 
+            case "directorDetails":
+                $ctrlDirector->directorDetails($_GET["id"]);
+                break;
+
+            
         }
     }
     else {
