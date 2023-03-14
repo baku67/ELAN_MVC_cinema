@@ -16,7 +16,7 @@
     <?php 
     foreach ($requestMovieList->fetchAll() as $movie) {
     ?>
-        <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a>
+        <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a><br>
 
     <?php
     }
