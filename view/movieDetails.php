@@ -17,7 +17,11 @@
     <?php 
     foreach ($requestCasting->fetchAll() as $actor) {
     ?>
-        <a href="index.php?action=actorDetails&id=<?= $actor["actor_id"] ?>"><?= $actor["acteur"] ?></a><br>
+        <p style="display:inline-flex;">
+            <a href="index.php?action=actorDetails&id=<?= $actor["actor_id"] ?>"><?= $actor["acteur"] ?></a>
+            <span>&nbsp;dans le rôle de <?= $actor["role_name"] ?></span>
+        </p>
+        <br>
 
     <?php
     }

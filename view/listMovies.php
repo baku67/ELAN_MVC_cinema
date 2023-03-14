@@ -83,6 +83,96 @@
     </table>
 
 
+    <form action="index.php" method="POST">
+        <h3>Ajouter un film:</h3>
+        <input type="hidden" name="addMovieForm">
+        <div>
+            <label for="movieTitle">Titre:</label>
+            <input name="movieTitle" type="text" placeholder="Ex: Titanic, Star Wars, ...">
+        </div>
+        <div>
+            <label for="moviePublishDate">Année de sortie:</label>
+            <!-- <input name="moviePublishDate" type="number" min="1900" max="2099" step="1" value="2023"> -->
+            <input name="moviePublishDate" type="date">
+        </div>
+        <div>
+            <label for="movieLength">Durée:</label>
+            <input name="movieLength" type="number" placeholder="en minutes">
+        </div>
+        <div>
+            <label for="movieSynopsis">Synopsis:</label>
+            <textarea name="movieSynopsis"></textarea>
+        </div>
+        <div>
+            <label for="movieDirector">Réalisateur:</label>
+            <select name="movieDirector">
+                <option value="">-- Veuillez choisir un réalisateur</option>
+                <?php 
+                    foreach ($requestDirectorsSelect->fetchAll() as $director) {
+                ?>
+                        <option value="<?= $director["director_id"] ?>"><?= $director["Director"] ?></option>
+                <?php
+                    }
+                ?>
+            </select>
+        </div>
+        <div>
+            <label for="movieImage">Affiche:</label>
+            <input type="file" name="movieImage" accept="image/png, image/jpeg">
+        </div>
+
+        
+
+
+        <div class="rating">
+            <label>
+                <input type="radio" name="stars" value="1" />
+                <span class="icon">★</span>
+            </label>
+            <label>
+                <input type="radio" name="stars" value="2" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+            </label>
+            <label>
+                <input type="radio" name="stars" value="3" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>   
+            </label>
+            <label>
+                <input type="radio" name="stars" value="4" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+            </label>
+            <label>
+                <input type="radio" name="stars" value="5" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+            </label>
+        </div>
+
+
+
+        <input type="submit" value="Ajouter">
+
+        
+        <script>
+            $(':radio').change(function() {
+                console.log('New star rating: ' + this.value);
+            });
+        </script>
+
+
+        
+    </form>
+
+
 
 
 <?php 

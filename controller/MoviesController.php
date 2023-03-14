@@ -17,6 +17,12 @@
                 SELECT movieGenre_id, movieGenre_label 
                 FROM movie_genre
             ");
+
+            $requestDirectorsSelect = $pdo->query("
+                SELECT CONCAT(p.person_firstName, ' ', person_lastName) AS 'Director', director_id
+                FROM person p
+                INNER JOIN director d ON d.person_id = p.person_id
+            ");
             require "view/listMovies.php";
         }
 
@@ -85,11 +91,12 @@
             ]);
 
             $requestCasting = $pdo->prepare("
-                SELECT m.movie_id, movie_title, CONCAT(p.person_firstName, ' ', p.person_lastName) AS 'acteur', person_gender, a.actor_id
+                SELECT m.movie_id, movie_title, CONCAT(p.person_firstName, ' ', p.person_lastName) AS 'acteur', person_gender, a.actor_id, role_name
                 FROM casting
                 INNER JOIN movie m ON m.movie_id = casting.movie_id
                 INNER JOIN actor a ON casting.actor_id = a.actor_id
                 INNER JOIN person p ON p.person_id = a.person_id
+                INNER JOIN role r ON r.role_id = casting.role_Id
                 WHERE (m.movie_id = :movieId) 
             ");
             $requestCasting->execute([
