@@ -121,9 +121,6 @@
             if($_POST["submit"]) {
             
                 $movieTitle = filter_input(INPUT_POST, "movieTitle", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                // if (checkdate($_POST["moviePublishDate"]["month"], $_POST["moviePublishDate"]["day"], $_POST["moviePublishDate"]["year"])) {
-                //     $moviePublishDate = $_POST["moviePublishDate"];
-                // }
                 $moviePublishDate = $_POST["moviePublishDate"];
                 $movieLength = filter_input(INPUT_POST, "movieLength", FILTER_VALIDATE_INT);
                 $movieSynopsis = filter_input(INPUT_POST, "movieSynopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -175,7 +172,13 @@
                 ]);
 
                 // Récupération de l'id du movie tout juste inséré
+                // https://openclassrooms.com/forum/sujet/pdo-lastinsertid-61280
                 // PDO::lastInsertId()
+                $lastMovieId = "test";
+                $lastMovieId = $pdo->lastInsertId();
+
+                // 2eme requete d'insertion dans table movieGenreList (table relationnelle) pour chaque genre coché:
+
 
                 // On repasse par le controller pour l'affichage de la liste de film (à jour):
                 header("location: index.php?action=listMovies");

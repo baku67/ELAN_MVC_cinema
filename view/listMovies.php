@@ -1,6 +1,7 @@
 <?php 
     ob_start(); 
     $genreList = $requestGenre->fetchAll();
+    var_dump($lastMovieId);
 ?>
 
 <p>Il y a <?= $request->rowCount() ?> films disponibles</p>
