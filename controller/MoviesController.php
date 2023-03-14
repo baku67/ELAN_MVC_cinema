@@ -5,6 +5,8 @@
 
     class MoviesController {
 
+
+
         public function listMovies() {
             $pdo = Connect::seConnecter();
             $request = $pdo->query("
@@ -25,6 +27,8 @@
             ");
             require "view/listMovies.php";
         }
+
+
 
         public function listMoviesFiltered(int $filterId, string $filterLabel) {
             
@@ -76,6 +80,8 @@
         //     // listMovies();
         // }
 
+
+
         public function movieDetails(int $movieId) {
             $pdo = Connect::seConnecter();
 
@@ -108,6 +114,8 @@
         }
 
 
+
+
         public function addMovie() {
 
             if($_POST["submit"]) {
@@ -122,19 +130,33 @@
                 $movieDirector = filter_input(INPUT_POST, "movieDirector", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $stars = filter_input(INPUT_POST, "stars", FILTER_VALIDATE_INT);
 
+
                 // Gestion de l'upload d'image:
+                $fileName = "";
+                // Image pas obligatoire
+                if(isset($_FILES['file'])){
+                    // Initialisation var:
+                    $tmpName = $_FILES['file']['tmp_name'];
+                    $name = $_FILES['file']['name'];
+                    $size = $_FILES['file']['size'];
+                    $error = $_FILES['file']['error'];
 
+                    // Récupération de l'extension du fichier:
+                    $tabExtension = explode('.', $name);
+                    $extension = strtolower(end($tabExtension));
+                    // Extensions autorisées :
+                    $extensions = ['jpg', 'png', 'jpeg', "PNG", "JPG"];
+                    // Max size: 40Mb 
+                    $maxSize = 400000;
 
-                $newMovie = [
-                    "movieTitle" => $movieTitle,
-                    "moviePublishDate" => $moviePublishDate,
-                    "movieLength" => $movieLength,
-                    "movieSynopsis" => $movieSynopsis,
-                    "movieDirector" => $movieDirector,
-                    // "imageUrl" => $imageUrl,
-                    "imageUrl" => "test",
-                    "stars" => $stars,
-                ];
+                    if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
+                        $uniqueName = uniqid($name, true);
+                        $fileName = $uniqueName.".".$extension;
+                        // Upload:
+                        move_uploaded_file($tmpName, './uploads/'.$fileName);
+                    }
+                }
+                // Fin upload
 
                 $pdo = Connect::seConnecter();
                 $addMovieRequest = $pdo->prepare("
@@ -148,7 +170,7 @@
                     "movieLength" => $movieLength,
                     "movieSynopsis" => $movieSynopsis,
                     "movieRating" => $stars,
-                    "movieImgUrl" => "test.png",
+                    "movieImgUrl" => $fileName,
                     "directorId" => $movieDirector,
                 ]);
 

@@ -86,7 +86,7 @@
     </table>
 
 
-    <form class="form" action="index.php?action=addMovie" method="POST">
+    <form class="form" action="index.php?action=addMovie" method="POST" enctype="multipart/form-data">
         <h3>Ajouter un film:</h3>
         <input type="hidden" name="type" value="addMovieForm">
         <div>
@@ -120,8 +120,8 @@
             </select>
         </div>
         <div>
-            <label for="movieImage">Affiche:</label>
-            <input type="file" name="movieImage" accept="image/png, image/jpeg">
+            <label for="file">Affiche:</label>
+            <input type="file" id="file" name="file" accept="image/png, image/jpeg">
         </div>
 
 
