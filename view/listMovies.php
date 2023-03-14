@@ -83,9 +83,9 @@
     </table>
 
 
-    <form action="index.php" method="POST">
+    <form action="index.php?action=addMovie" method="POST">
         <h3>Ajouter un film:</h3>
-        <input type="hidden" name="addMovieForm">
+        <input type="hidden" name="type" value="addMovieForm">
         <div>
             <label for="movieTitle">Titre:</label>
             <input name="movieTitle" type="text" placeholder="Ex: Titanic, Star Wars, ...">
@@ -159,7 +159,7 @@
 
 
 
-        <input type="submit" value="Ajouter">
+        <input type="submit" name="submit" value="Ajouter">
 
         
         <script>

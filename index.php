@@ -58,6 +58,10 @@
                 $ctrlGenre->genreFilter($_GET["id"]);
                 break;
 
+            case "addMovie":
+                $ctrlMovies->addMovie();
+                break;
+
             // case "removeFilter":
             //     $ctrlMovies->removeFilter($filterId);
             //     break;

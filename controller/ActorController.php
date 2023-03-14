@@ -16,7 +16,7 @@
 
         }
 
-        public function actorDetails($actorId) {
+        public function actorDetails(int $actorId) {
             $pdo = Connect::seConnecter();
 
             $request2 = $pdo->prepare("

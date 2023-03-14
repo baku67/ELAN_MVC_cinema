@@ -16,7 +16,7 @@
 
         }
 
-        public function directorDetails($directorId) {
+        public function directorDetails(int $directorId) {
             $pdo = Connect::seConnecter();
 
             $request2 = $pdo->prepare("

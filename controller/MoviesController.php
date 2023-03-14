@@ -26,7 +26,7 @@
             require "view/listMovies.php";
         }
 
-        public function listMoviesFiltered($filterId, $filterLabel) {
+        public function listMoviesFiltered(int $filterId, string $filterLabel) {
             
             $newFilter = [
                 "filterId" => $filterId, 
@@ -76,7 +76,7 @@
         //     // listMovies();
         // }
 
-        public function movieDetails($movieId) {
+        public function movieDetails(int $movieId) {
             $pdo = Connect::seConnecter();
 
             $request2 = $pdo->prepare("
@@ -105,6 +105,57 @@
 
 
             require "view/movieDetails.php";
+        }
+
+
+        public function addMovie() {
+
+            if($_POST["submit"]) {
+            
+                $movieTitle = filter_input(INPUT_POST, "movieTitle", FILTER_UNSAFE_RAW);
+                // if (checkdate($_POST["moviePublishDate"]["month"], $_POST["moviePublishDate"]["day"], $_POST["moviePublishDate"]["year"])) {
+                //     $moviePublishDate = $_POST["moviePublishDate"];
+                // }
+                $movieLength = filter_input(INPUT_POST, "movieLength", FILTER_VALIDATE_INT);
+                $movieSynopsis = filter_input(INPUT_POST, "movieSynopsis", FILTER_UNSAFE_RAW);
+                $movieDirector = filter_input(INPUT_POST, "movieDirector", FILTER_UNSAFE_RAW);
+                $stars = filter_input(INPUT_POST, "stars", FILTER_VALIDATE_INT);
+
+                // Gestion de l'upload d'image:
+
+
+                $newMovie = [
+                    "movieTitle" => $movieTitle,
+                    // "moviePublishDate" => $moviePublishDate,
+                    "movieLength" => $movieLength,
+                    "movieSynopsis" => $movieSynopsis,
+                    "movieDirector" => $movieDirector,
+                    // "imageUrl" => $imageUrl,
+                    "imageUrl" => "test",
+                    "stars" => $stars,
+                ];
+
+                $pdo = Connect::seConnecter();
+                $addMovieRequest = $pdo->prepare("
+                    INSERT INTO movie (movie_title, movie_frenchPublishDate, movie_length, movie_synopsis, movie_rating, movie_imgUrl, director_id) 
+                    VALUES (:movieTitle, :moviePublishDate, :movieLength, :movieSynopsis, :movieRating, :movieImgUrl, :directorId)
+                ");
+                // Données de test à remplacer par les var
+                $addMovieRequest->execute([
+                    "movieTitle" => "test",
+                    "moviePublishDate" => "03-12-1996",
+                    "movieLength" => 132,
+                    "movieSynopsis" => "testetstetstetstetst",
+                    "movieRating" => 3,
+                    "movieImgUrl" => "test.png",
+                    "directorId" => 1,
+                ]);
+
+                // Changer la vue 
+                // listMovies();
+                // require "view/listMovies.php";
+        
+            }
         }
 
     }

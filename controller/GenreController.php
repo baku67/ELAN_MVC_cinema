@@ -15,7 +15,7 @@
 
         }
 
-        public function genreFilter($genreId) {
+        public function genreFilter(int $genreId) {
             $pdo = Connect::seConnecter();
             $request2 = $pdo->prepare("
                 SELECT movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
