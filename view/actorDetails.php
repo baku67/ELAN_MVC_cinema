@@ -18,6 +18,7 @@
     ?>
         <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a><br>
 
+        
     <?php
     }
     ?>
