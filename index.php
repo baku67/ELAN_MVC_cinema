@@ -7,6 +7,8 @@
     use Controller\ActorController;
     use Controller\DirectorController;
     use Controller\GenreController;
+    use Controller\RoleController;
+
 
     spl_autoload_register(function ($class_name) {
         include $class_name . '.php';
@@ -17,6 +19,8 @@
     $ctrlActors = new ActorController();
     $ctrlDirector = new DirectorController();
     $ctrlGenre = new GenreController();
+    $ctrlRole = new RoleController();
+
 
 
 
@@ -54,8 +58,16 @@
                 $ctrlGenre->listGenre();
                 break;
 
-            case "genreFilter":
-                $ctrlGenre->genreFilter($_GET["id"]);
+            // case "genreFilter":
+            //     $ctrlGenre->genreFilter($_GET["id"]);
+            //     break;
+
+            case "addGenre":
+                $ctrlGenre->addGenre();
+                break;
+
+            case "addRole":
+                $ctrlRole->addRole();
                 break;
 
             case "addMovie":

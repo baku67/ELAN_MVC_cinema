@@ -10,6 +10,21 @@
     <br>
     <a href="index.php?action=listDirectors">Voir la liste des réalisateurs</a>
 
+    <br><br>
+
+    <p>Ajouter un genre:</p>
+    <form action="index.php?action=addGenre" method="post">
+        <label for="genreTitle"></label>
+        <input name="genreTitle" type="text" placeholder="Ex: Drame, Fiction, ...">
+        <input type="submit" name="submit" value="Ajouter">
+    </form>
+
+    <p>Ajouter un role:</p>
+    <form action="index.php?action=addRole" method="post">
+        <label for="roleName"></label>
+        <input name="roleName" type="text" placeholder="Ex: Zorro, Tinky Winky, ...">
+        <input type="submit" name="submit" value="Ajouter">
+    </form>
 
 <?php 
     $contenu = ob_get_clean();

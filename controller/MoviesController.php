@@ -112,13 +112,13 @@
 
             if($_POST["submit"]) {
             
-                $movieTitle = filter_input(INPUT_POST, "movieTitle", FILTER_UNSAFE_RAW);
+                $movieTitle = filter_input(INPUT_POST, "movieTitle", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 // if (checkdate($_POST["moviePublishDate"]["month"], $_POST["moviePublishDate"]["day"], $_POST["moviePublishDate"]["year"])) {
                 //     $moviePublishDate = $_POST["moviePublishDate"];
                 // }
                 $movieLength = filter_input(INPUT_POST, "movieLength", FILTER_VALIDATE_INT);
-                $movieSynopsis = filter_input(INPUT_POST, "movieSynopsis", FILTER_UNSAFE_RAW);
-                $movieDirector = filter_input(INPUT_POST, "movieDirector", FILTER_UNSAFE_RAW);
+                $movieSynopsis = filter_input(INPUT_POST, "movieSynopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $movieDirector = filter_input(INPUT_POST, "movieDirector", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $stars = filter_input(INPUT_POST, "stars", FILTER_VALIDATE_INT);
 
                 // Gestion de l'upload d'image:

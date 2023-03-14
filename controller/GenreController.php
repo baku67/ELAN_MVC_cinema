@@ -30,6 +30,28 @@
             require "view/listMovies.php";
 
         }
+
+        public function addGenre() {
+            if($_POST["submit"]) {
+
+                if(filter_input(INPUT_POST, "genreTitle", FILTER_SANITIZE_FULL_SPECIAL_CHARS)) {
+                    $genreTitle = filter_input(INPUT_POST, "genreTitle", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                }
+
+                $pdo = Connect::seConnecter();
+                $addGenreRequest = $pdo->prepare("
+                    INSERT INTO movie_genre (movieGenre_label) VALUES (:genreTitle)
+                ");
+                $addGenreRequest->execute([
+                    "genreTitle" => $genreTitle
+                ]);
+
+
+                $_SESSION["success"] = "Le genre " . $genreTitle  . " a bien été ajouté";
+                header('Location: index.php');
+
+            }
+        }
     }
 
 ?>
