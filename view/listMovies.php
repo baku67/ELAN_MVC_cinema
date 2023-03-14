@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php 
+    ob_start(); 
+    $genreList = $requestGenre->fetchAll();
+?>
 
 <p>Il y a <?= $request->rowCount() ?> films disponibles</p>
 <a href="index.php">Revenir à l'accueil</a>
@@ -10,7 +13,7 @@
         <ul id="movieFilterGenreList">
             <!-- For each genre créer le bouton filtre (+localstorage pour garder et cumuler ?) -->
             <?php 
-            foreach($requestGenre->fetchAll() as $genre) {
+            foreach($genreList as $genre) {
             ?>
                 <li><a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
             <?php
@@ -24,14 +27,14 @@
         <ul id="movieFilterGenreList">
             <!-- For each genre créer le bouton filtre (+localstorage pour garder et cumuler ?) -->
             <?php 
-            foreach($requestGenre->fetchAll() as $genre) {
+            foreach($genreList as $genre) {
             ?>
                 <?php
-                if(!in_array($genre["movieGenre_id"], $_SESSION["filters"][0])) {
+                // if(!in_array($genre["movieGenre_id"], $_SESSION["filters"][0])) {
                 ?>
-                <li><a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
+                    <li><a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a></li>
                 <?php
-                }
+                // }
                 ?>
             <?php
             }
@@ -83,7 +86,7 @@
     </table>
 
 
-    <form action="index.php?action=addMovie" method="POST">
+    <form class="form" action="index.php?action=addMovie" method="POST">
         <h3>Ajouter un film:</h3>
         <input type="hidden" name="type" value="addMovieForm">
         <div>
@@ -121,8 +124,23 @@
             <input type="file" name="movieImage" accept="image/png, image/jpeg">
         </div>
 
-        
 
+        <div>
+            <p></p>
+            <fieldset>
+                <legend>Genre(s):</legend>
+                <?php
+                foreach($genreList as $genre) {
+                ?>
+                    <label for="<?= $genre["movieGenre_id"] ?>"><?= $genre["movieGenre_label"] ?></label>
+                    <input name="<?= $genre["movieGenre_id"] ?>" id="<?= $genre["movieGenre_id"] ?>" type="checkbox">
+                <?php
+                }
+                ?>
+            </fieldset>
+        </div>
+
+        
 
         <div class="rating">
             <label>
@@ -157,7 +175,7 @@
             </label>
         </div>
 
-
+        <br>
 
         <input type="submit" name="submit" value="Ajouter">
 

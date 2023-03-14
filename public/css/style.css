@@ -43,6 +43,12 @@ table {
 }
 
 
+.form {
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    margin: 15px auto;
+}
 
 
 /* Rating stars */

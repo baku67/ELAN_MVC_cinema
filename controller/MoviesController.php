@@ -116,6 +116,7 @@
                 // if (checkdate($_POST["moviePublishDate"]["month"], $_POST["moviePublishDate"]["day"], $_POST["moviePublishDate"]["year"])) {
                 //     $moviePublishDate = $_POST["moviePublishDate"];
                 // }
+                $moviePublishDate = $_POST["moviePublishDate"];
                 $movieLength = filter_input(INPUT_POST, "movieLength", FILTER_VALIDATE_INT);
                 $movieSynopsis = filter_input(INPUT_POST, "movieSynopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $movieDirector = filter_input(INPUT_POST, "movieDirector", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -126,7 +127,7 @@
 
                 $newMovie = [
                     "movieTitle" => $movieTitle,
-                    // "moviePublishDate" => $moviePublishDate,
+                    "moviePublishDate" => $moviePublishDate,
                     "movieLength" => $movieLength,
                     "movieSynopsis" => $movieSynopsis,
                     "movieDirector" => $movieDirector,
@@ -142,16 +143,20 @@
                 ");
                 // Données de test à remplacer par les var
                 $addMovieRequest->execute([
-                    "movieTitle" => "test",
-                    "moviePublishDate" => "03-12-1996",
-                    "movieLength" => 132,
-                    "movieSynopsis" => "testetstetstetstetst",
-                    "movieRating" => 3,
+                    "movieTitle" => $movieTitle,
+                    "moviePublishDate" => $moviePublishDate,
+                    "movieLength" => $movieLength,
+                    "movieSynopsis" => $movieSynopsis,
+                    "movieRating" => $stars,
                     "movieImgUrl" => "test.png",
-                    "directorId" => 1,
+                    "directorId" => $movieDirector,
                 ]);
 
-                // Changer la vue 
+                // Récupération de l'id du movie tout juste inséré
+                // PDO::lastInsertId()
+
+                // On repasse par le controller pour l'affichage de la liste de film (à jour):
+                header("location: index.php?action=listMovies");
                 // listMovies();
                 // require "view/listMovies.php";
         
