@@ -1,6 +1,7 @@
 <?php ob_start(); ?>
 
 <p>Il y a <?= $request->rowCount() ?> Réalisateurs</p>
+<a href="javascript:history.go(-1)">Retour</a>
 
 
     <table>

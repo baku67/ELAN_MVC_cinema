@@ -18,6 +18,7 @@
 
         public function directorDetails($directorId) {
             $pdo = Connect::seConnecter();
+
             $request2 = $pdo->prepare("
                 SELECT p.person_id, CONCAT(person_firstName, ' ', person_lastName) AS director_name, person_gender, person_birthDate
                 FROM director d
@@ -27,6 +28,18 @@
             $request2->execute([
                 "director_id" => $directorId
             ]);
+
+            $requestMovieList = $pdo->prepare("
+                SELECT movie_id, movie_title, YEAR(movie_frenchPublishDate)
+                FROM movie m 
+                WHERE director_id = :directorId
+            ");
+            $requestMovieList->execute([
+                "directorId" => $directorId
+            ]);
+
+
+
             require "view/directorDetails.php";
 
         }

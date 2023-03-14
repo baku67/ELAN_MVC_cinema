@@ -11,8 +11,8 @@
                 SELECT movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
                 FROM movie m
                 INNER JOIN director d ON m.director_id = d.director_id
-                INNER JOIN person p ON p.person_id = d.person_id
-            ");
+                INNER JOIN person p ON p.person_id = d.person_id"
+            );
             $requestGenre = $pdo->query("
                 SELECT movieGenre_id, movieGenre_label 
                 FROM movie_genre
@@ -54,20 +54,20 @@
             require "view/listMovies.php";
         }
 
-        public function removeFilter($filterId) {
-            // $_SESSION["filters"][0]
+        // public function removeFilter($filterId) {
+        //     // $_SESSION["filters"][0]
 
-            // Doc: https://stackoverflow.com/questions/369602/deleting-an-element-from-an-array-in-php
-            $array = [0 => "a", 1 => "b", 2 => "c"];
-            $array = \array_filter($array, static function ($element) {
-                return $element !== "b";
-                //                   ↑
-                // Array value which you want to delete
-            });
+        //     // Doc: https://stackoverflow.com/questions/369602/deleting-an-element-from-an-array-in-php
+        //     $array = [0 => "a", 1 => "b", 2 => "c"];
+        //     $array = \array_filter($array, static function ($element) {
+        //         return $element !== "b";
+        //         //                   ↑
+        //         // Array value which you want to delete
+        //     });
 
-            // A adapter car suppr 1 filtre et il peut en rester
-            listMovies();
-        }
+        //     // A adapter car suppr 1 filtre et il peut en rester
+        //     // listMovies();
+        // }
 
         public function movieDetails($movieId) {
             $pdo = Connect::seConnecter();

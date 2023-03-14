@@ -18,6 +18,7 @@
 
         public function actorDetails($actorId) {
             $pdo = Connect::seConnecter();
+
             $request2 = $pdo->prepare("
                 SELECT p.person_id, CONCAT(person_firstName, ' ', person_lastName) AS actor_name, person_gender, person_birthDate
                 FROM actor a
@@ -27,9 +28,24 @@
             $request2->execute([
                 "actor_id" => $actorId
             ]);
+
+            $requestMovieList = $pdo->prepare("
+                SELECT m.movie_id, movie_title, role_name AS 'Rôle', movie_frenchPublishDate AS 'Date de sortie FR'
+                FROM casting c
+                INNER JOIN movie m ON m.movie_id = c.movie_id
+                INNER JOIN role r ON r.role_id = c.role_id
+                WHERE (actor_id = :actorId)
+                ORDER BY movie_frenchPublishDate DESC
+            ");
+            $requestMovieList->execute([
+                "actorId" => $actorId
+            ]);
+
             require "view/actorDetails.php";
 
         }
+
+
     }
 
 ?>

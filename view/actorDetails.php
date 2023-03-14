@@ -10,6 +10,18 @@
     <p>Sexe: <?= $actorDetails["person_gender"] ?></p>
     <p>Date de naissance: <?= $actorDetails["person_birthDate"] ?></p>
 
+    <br><br>
+
+    <h3>Filmographie</h3>
+    <?php 
+    foreach ($requestMovieList->fetchAll() as $movie) {
+    ?>
+        <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a>
+
+    <?php
+    }
+    ?>
+
 <?php
     $contenu = ob_get_clean();
     $titre = "Détails de l'acteur";
