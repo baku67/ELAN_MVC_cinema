@@ -54,6 +54,7 @@
             require "view/listMovies.php";
         }
 
+
         // public function removeFilter($filterId) {
         //     // $_SESSION["filters"][0]
 
@@ -71,8 +72,9 @@
 
         public function movieDetails($movieId) {
             $pdo = Connect::seConnecter();
+
             $request2 = $pdo->prepare("
-                SELECT movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
+                SELECT movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur', d.director_id
                 FROM movie m
                 INNER JOIN director d ON m.director_id = d.director_id
                 INNER JOIN person p ON p.person_id = d.person_id
@@ -81,6 +83,20 @@
             $request2->execute([
                 "movieId" => $movieId
             ]);
+
+            $requestCasting = $pdo->prepare("
+                SELECT m.movie_id, movie_title, CONCAT(p.person_firstName, ' ', p.person_lastName) AS 'acteur', person_gender, a.actor_id
+                FROM casting
+                INNER JOIN movie m ON m.movie_id = casting.movie_id
+                INNER JOIN actor a ON casting.actor_id = a.actor_id
+                INNER JOIN person p ON p.person_id = a.person_id
+                WHERE (m.movie_id = :movieId) 
+            ");
+            $requestCasting->execute([
+                "movieId" => $movieId
+            ]);
+
+
             require "view/movieDetails.php";
         }
 
