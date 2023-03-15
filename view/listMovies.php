@@ -1,7 +1,7 @@
 <?php 
     ob_start(); 
     $genreList = $requestGenre->fetchAll();
-    var_dump($lastMovieId);
+    // var_dump($lastMovieId);
 ?>
 
 <p>Il y a <?= $request->rowCount() ?> films disponibles</p>
@@ -134,7 +134,7 @@
                 foreach($genreList as $genre) {
                 ?>
                     <label for="<?= $genre["movieGenre_id"] ?>"><?= $genre["movieGenre_label"] ?></label>
-                    <input name="<?= $genre["movieGenre_id"] ?>" id="<?= $genre["movieGenre_id"] ?>" type="checkbox">
+                    <input value="<?= $genre["movieGenre_id"] ?>" name="genre[]" id="<?= $genre["movieGenre_id"] ?>" type="checkbox">
                 <?php
                 }
                 ?>

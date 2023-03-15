@@ -174,10 +174,22 @@
                 // Récupération de l'id du movie tout juste inséré
                 // https://openclassrooms.com/forum/sujet/pdo-lastinsertid-61280
                 // PDO::lastInsertId()
-                $lastMovieId = "test";
-                $lastMovieId = $pdo->lastInsertId();
+                $last_insert_id = $pdo->lastInsertId();
+
 
                 // 2eme requete d'insertion dans table movieGenreList (table relationnelle) pour chaque genre coché:
+                $checkboxes = isset($_POST['genre']) ? $_POST['genre'] : array();
+                foreach($checkboxes as $value) {
+
+                    $addGenreRelation = $pdo->prepare("
+                        INSERT INTO moviegenrelist (movie_id, movieGenre_id) 
+                        VALUES (:movieId, :genreId)
+                    ");
+                    $addGenreRelation->execute([
+                        "movieId" => $last_insert_id,
+                        "genreId" => $value
+                    ]);
+                }
 
 
                 // On repasse par le controller pour l'affichage de la liste de film (à jour):
