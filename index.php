@@ -74,6 +74,15 @@
                 $ctrlMovies->addMovie();
                 break;
 
+            case "addActor":
+                $ctrlActors->addActor();
+                break;
+
+            case "addDirector":
+                $ctrlDirector->addDirector();
+                break;
+    
+
             // case "removeFilter":
             //     $ctrlMovies->removeFilter($filterId);
             //     break;

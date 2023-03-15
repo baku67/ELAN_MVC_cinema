@@ -43,6 +43,45 @@
             require "view/directorDetails.php";
 
         }
+
+
+        public function addDirector() {
+            if($_POST["submit"]) {
+
+                $pdo = Connect::seConnecter();
+
+                $firstName = filter_input(INPUT_POST, "dirFirstName", FILTER_SANITIZE_SPECIAL_CHARS);
+                $lastName = filter_input(INPUT_POST, "dirLastName", FILTER_SANITIZE_SPECIAL_CHARS);
+                $gender = $_POST["dirGender"];
+                $birthDate = $_POST["dirBirthDate"];
+
+                $addPersonRequest = $pdo->prepare("
+                    INSERT INTO person (person_firstName, person_lastName, person_gender, person_birthDate) 
+                    VALUES (:firstName, :lastName, :gender, :birthDate)
+                ");
+                $addPersonRequest->execute([
+                    "firstName" => $firstName,
+                    "lastName" => $lastName,
+                    "gender" => $gender,
+                    "birthDate" => $birthDate,
+                ]);
+
+                $last_insert_id = $pdo->lastInsertId();
+
+                $addDirectorRequest = $pdo->prepare("
+                    INSERT INTO director (person_id) 
+                    VALUES (:personId)
+                ");
+                $addDirectorRequest->execute([
+                    "personId" => $last_insert_id,
+                ]);
+
+
+                header("location: index.php?action=listDirectors");
+
+            }
+
+        }
     }
 
 ?>

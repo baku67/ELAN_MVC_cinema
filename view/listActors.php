@@ -25,6 +25,36 @@
         </tbody>
     </table>
 
+    <br>
+
+    <p>Ajouter un acteur:</p>
+    <form action="index.php?action=addActor" method="post">
+        <label for="actorFirstName">Prénom:</label>
+        <input name="actorFirstName" id="actorFirstName" type="text" placeholder="">
+        <label for="actorLastName">Nom:</label>
+        <input name="actorLastName" id="actorLastName" type="text" placeholder="">
+        <fieldset>
+            <legend>Genre:</legend>
+            <div>
+                <input type="radio" id="femme" name="actorGender" value="femme"
+                        checked>
+                <label for="femme">Femme</label>
+            </div>
+            <div>
+                <input type="radio" id="homme" name="actorGender" value="homme">
+                <label for="homme">Homme</label>
+            </div>
+            <div>
+                <input type="radio" id="autre" name="actorGender" value="autre">
+                <label for="autre">Autre</label>
+            </div>
+        </fieldset>
+        <label for="actorBirthDate">Date de naissance:</label>
+        <input name="actorBirthDate" id="actorBirthDate" type="date" placeholder="">
+
+        <input type="submit" name="submit" value="Ajouter">
+    </form>
+
 
 
 

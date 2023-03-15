@@ -46,6 +46,45 @@
         }
 
 
+        public function addActor() {
+            if($_POST["submit"]) {
+
+                $pdo = Connect::seConnecter();
+
+                $firstName = filter_input(INPUT_POST, "actorFirstName", FILTER_SANITIZE_SPECIAL_CHARS);
+                $lastName = filter_input(INPUT_POST, "actorLastName", FILTER_SANITIZE_SPECIAL_CHARS);
+                $gender = $_POST["actorGender"];
+                $birthDate = $_POST["actorBirthDate"];
+
+                $addPersonRequest = $pdo->prepare("
+                    INSERT INTO person (person_firstName, person_lastName, person_gender, person_birthDate) 
+                    VALUES (:firstName, :lastName, :gender, :birthDate)
+                ");
+                $addPersonRequest->execute([
+                    "firstName" => $firstName,
+                    "lastName" => $lastName,
+                    "gender" => $gender,
+                    "birthDate" => $birthDate,
+                ]);
+
+                $last_insert_id = $pdo->lastInsertId();
+
+                $addActorRequest = $pdo->prepare("
+                    INSERT INTO actor (person_id) 
+                    VALUES (:personId)
+                ");
+                $addActorRequest->execute([
+                    "personId" => $last_insert_id,
+                ]);
+
+
+                header("location: index.php?action=listActors");
+
+            }
+
+        }
+
+
     }
 
 ?>
