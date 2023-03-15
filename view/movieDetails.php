@@ -11,6 +11,16 @@
 
     <p>Date de sortie: <?= $movieDetails["sortie"] ?></p>
     <p>Durée: <?= $movieDetails["movie_length"] ?></p>
+    <p>
+        Genres: 
+        <?php
+        foreach ($requestGenres as $genre) {
+        ?>
+            <a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a>
+        <?php
+        }
+        ?>
+    </p>
 
     <br>
 
