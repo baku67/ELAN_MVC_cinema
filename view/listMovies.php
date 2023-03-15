@@ -63,7 +63,7 @@
 
 
 
-    <table>
+    <table id="movieListTable">
         <thead>
             <tr>
                 <th>Titre</th>
@@ -85,6 +85,13 @@
             ?>
         </tbody>
     </table>
+
+
+    <script>
+        // $(document).ready( function () {
+        //     $('#movieListTable').DataTable();
+        // } );
+    </script>
 
 
     <form class="form" action="index.php?action=addMovie" method="POST" enctype="multipart/form-data">
