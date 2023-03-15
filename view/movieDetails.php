@@ -7,6 +7,19 @@
     <p>Détail du film: <?= $movieDetails["movie_title"] ?></p>
     <a href="javascript:history.go(-1)">Retour</a>
     <br>
+    <?php
+        if ($movieDetails["movie_imgUrl"] == "") {
+        ?>
+            <p>Aucune affiche disponible</p>
+        <?php
+        }
+        else if ($movieDetails["movie_imgUrl"] != "") {
+        ?>
+            <img src="<?= 'uploads/' . $movieDetails["movie_imgUrl"] ?>">
+        <?php
+        }
+    ?>
+    <br>
     <p>Réalisateur: <a href="index.php?action=directorDetails&id=<?= $movieDetails["director_id"] ?>"><?= $movieDetails["réalisateur"] ?></a></p>
 
     <p>Date de sortie: <?= $movieDetails["sortie"] ?></p>

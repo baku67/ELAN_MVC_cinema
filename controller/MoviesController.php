@@ -39,8 +39,8 @@
             $_SESSION["filters"][] = $newFilter;
             $pdo = Connect::seConnecter();
 
-            $requestTxt = 
-            "SELECT m.movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
+            $requestTxt = "
+            SELECT m.movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
             FROM movie m
             INNER JOIN director d ON m.director_id = d.director_id
             INNER JOIN person p ON p.person_id = d.person_id
@@ -86,7 +86,7 @@
             $pdo = Connect::seConnecter();
 
             $request2 = $pdo->prepare("
-                SELECT movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur', d.director_id
+                SELECT movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur', movie_imgUrl, d.director_id
                 FROM movie m
                 INNER JOIN director d ON m.director_id = d.director_id
                 INNER JOIN person p ON p.person_id = d.person_id
