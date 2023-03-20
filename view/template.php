@@ -13,10 +13,10 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 
-        <!-- Font: Rigtheous -->
+        <!-- Font: Rigtheous/Roboto -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">        
         
         <!-- FontAwesome -->
         <script src="https://kit.fontawesome.com/698848973e.js" crossorigin="anonymous"></script>
@@ -63,6 +63,9 @@
         </footer>
 
     </body>
+
+    <!-- Pre-load FontAwesome -->
+    <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
 
     
 </html>

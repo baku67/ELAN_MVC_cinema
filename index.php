@@ -81,6 +81,9 @@
             case "addDirector":
                 $ctrlDirector->addDirector();
                 break;
+
+            case "search":
+                break;
     
 
             // case "removeFilter":

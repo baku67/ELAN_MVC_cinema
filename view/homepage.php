@@ -1,25 +1,57 @@
 <?php
-    $titre = "Bienvenue";
-    $titre_secondaire = "Bienvenue";
+    $titre = "Accueil";
+    $titre_secondaire = "";
     ob_start();
 ?>
 
-    
+    <div id="gridHomepage">
+
+        <div id="newsDiv">
+            <div class="subtitleDiv">
+                <h2>Actualités</h2>
+                <div class="underlineElem"></div>
+            </div>
+
+            <div class="newsListDiv">   
+                <ul>
+                    <?php 
+                    foreach ($newsList as $news) {
+                    ?>
+                        <li class="newsCard">
+                            <div class="newsImgWrapper">
+                                <img class="newsImg" src="<?= $news["imgUrl"] ?>">
+                            </div>
+                            <!-- <p class="newsTitle"><?= $news["title"] ?></p> -->
+                            <p class="newsContent"><?= $news["content"] ?></p>
+                        </li>
+
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+
+        </div>
+
+        <div id="lastAddDiv">
+            <div class="subtitleDiv">
+                <h2>Derniers ajouts</h2>
+                <div class="underlineElem"></div>
+            </div>
+
+            <div class="lastAddListDiv">   
+                <ul>
+                    <!-- foreach elem ajouter un <li> -->
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
 
 
-    <p>Ajouter un genre:</p>
-    <form action="index.php?action=addGenre" method="post">
-        <label for="genreTitle"></label>
-        <input name="genreTitle" type="text" placeholder="Ex: Drame, Fiction, ...">
-        <input type="submit" name="submit" value="Ajouter">
-    </form>
 
-    <p>Ajouter un role:</p>
-    <form action="index.php?action=addRole" method="post">
-        <label for="roleName"></label>
-        <input name="roleName" type="text" placeholder="Ex: Zorro, Tinky Winky, ...">
-        <input type="submit" name="submit" value="Ajouter">
-    </form>
+
 
 <?php 
     $activeNavHome = "activeNav";
