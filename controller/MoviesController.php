@@ -17,7 +17,7 @@
                 ORDER BY sortie DESC
             ");
             $requestGenre = $pdo->query("
-                SELECT movieGenre_id, movieGenre_label 
+                SELECT movieGenre_id, movieGenre_label, genreImgUrl, genreColor
                 FROM movie_genre
             ");
 
@@ -59,7 +59,7 @@
                 "movieGenreId" => $filterId
             ]);
             $requestGenre = $pdo->query("
-                SELECT movieGenre_id, movieGenre_label 
+                SELECT movieGenre_id, movieGenre_label, genreImgUrl, genreColor
                 FROM movie_genre
             ");
             require "view/listMovies.php";
@@ -111,7 +111,7 @@
             ]);
 
             $requestGenres = $pdo->prepare("
-                SELECT mg.movieGenre_id, movieGenre_label
+                SELECT mg.movieGenre_id, movieGenre_label, genreImgUrl, genreColor
                 FROM movie_genre AS mg
                 INNER JOIN moviegenrelist AS mgl ON mgl.movieGenre_id = mg.movieGenre_id
                 WHERE mgl.movie_id = :movieId

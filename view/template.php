@@ -46,7 +46,7 @@
                 <li class="<?= $activeNavMovies ?>"><a href="index.php?action=listMovies">FILMS</a></li>
                 <li class="<?= $activeNavActors ?>"><a href="index.php?action=listActors">ACTEURS</a></li>
                 <li class="<?= $activeNavDirectors ?>"><a href="index.php?action=listDirectors">RÉALISATEURS</a></li>
-                <li class="<?= $activeNavAdmin ?>"><a href="">Admin</a></li>
+                <li class="<?= $activeNavAdmin ?>"><a href="index.php?action=admin">Admin</a></li>
             </ul>
         </header>
 

@@ -37,7 +37,7 @@ header {
   padding-bottom: 10px;
 }
 #title h1 {
-  font-size: 3.5em;
+  font-size: 3em;
   margin-block-start: 0;
   margin-block-end: 0;
   color: white;
@@ -45,7 +45,7 @@ header {
   padding-top: 7px;
 }
 #title span {
-  font-size: 1.5em;
+  font-size: 1.1em;
   color: var(--secondary-color);
   letter-spacing: 15px;
   margin-left: 41px;
@@ -60,7 +60,7 @@ header ul {
   color: white;
   list-style-type: none;
   margin-block-end: 3px;
-  font-size: 110%;
+  font-size: 100%;
 }
 header ul li {
   margin: 0 5px;
@@ -170,12 +170,16 @@ main {
 
   font-family: 'Roboto Condensed', sans-serif;
 
+  width: 75%;
+  margin: 0 auto;
 }
 
 .subtitleDiv {
   width: fit-content;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 35px;
+  font-size: 1.15em;
 }
 .subtitleDiv h2 {
   margin-block-end: 0;
@@ -192,7 +196,7 @@ main {
 
 
 .newsCard {
-  width: 330px;
+  width: 310px;
     margin: 0 auto;
     border: 1px solid rgb(0 0 0 / 15%);
     border-radius: 5px;
@@ -201,16 +205,18 @@ main {
 
     cursor: pointer;
     transition: all 0.4s;
+
+    position: relative;
 }
 
 .newsCard:hover .newsImg {
-    opacity: 0.6;
-    width: 120%;
+    opacity: 0.7;
+    width: 110%;
 }
 .newsCard:hover {
   border-color: var(--secondary-color);
 }
-.newsCard:hover .newsImgWrapper {
+.newsCard:hover .newsImg {
   border-bottom: 1px solid var(--secondary-color);
 }
 
@@ -221,25 +227,75 @@ main {
 }
 
 .newsImgWrapper {
-  width: 330px;
-  height: 180px;
+  width: 310px;
+  height: 170px;
   overflow: hidden;
-  border-bottom: 1px solid var(--primary-color);
-  transition: all 0.4s;
 }
 
 .newsImg {
-  width: 330px;
+  width: 310px;
   border-top-right-radius: 7px;
   border-top-left-radius: 7px;
   transition: all 0.4s;
+  border-bottom: 1px solid var(--primary-color);
+  transition: all 0.4s;
+
+}
+
+.newsPubDate {
+  position: absolute;
+    bottom: 7px;
+    right: 12px;
+    font-size: 0.72em;
+    margin-block-end: 0;
+    opacity: 0.6;
 }
 
 
 
+.movieContent {
+  width: 80%;
+  margin: 0 auto;
 
+  font-family: 'Roboto condensed';
+}
 
+.countElems {
+  position: absolute;
+  right: 10px;
+  /* top: 0; */
+  font-style: italic;
+  opacity: 0.7;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
 
+.filtersContainer {
+  display: inline-flex;
+}
+
+.genreImg {
+  position: absolute;
+    width: 35px;
+    height: 26px;
+    transform: translateX(8px) translateY(-3px);
+    opacity: 0.6;
+}
+
+.newsStrong {
+  color: var(--secondary-color);
+  text-shadow: 0 0 black;
+}
+
+.filterIcon {
+  font-size: 1.8em;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  position: relative;
+  top: 10px;
+  right: 15px;
+  opacity: 0.4;
+}
 
 a {
     text-decoration: none;
@@ -257,14 +313,16 @@ table {
     padding-inline-start: 0;
 }
 #movieFilterGenreList li {
-    margin: 0px 12px;
+    margin: 0px 4px;
 
 }
 #movieFilterGenreList a {
     text-decoration: none;
     border: 1px solid black;
-    padding: 5px 10px;
-    border-radius: 2px;
+    padding: 9px 10px;
+    border-radius: 3px;
+
+    padding-right: 50px;
 }
 
 .filterActiv {

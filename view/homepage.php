@@ -23,6 +23,7 @@
                             </div>
                             <!-- <p class="newsTitle"><?= $news["title"] ?></p> -->
                             <p class="newsContent"><?= $news["content"] ?></p>
+                            <p class="newsPubDate"><?= $news["publishDate"]?></p>
                         </li>
 
                     <?php

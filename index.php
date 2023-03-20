@@ -84,6 +84,10 @@
 
             case "search":
                 break;
+
+            case "admin":
+                // $ctrlAdmin->getAdmin();
+                break;
     
 
             // case "removeFilter":
