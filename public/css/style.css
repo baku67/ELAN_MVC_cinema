@@ -1,3 +1,81 @@
+:root {
+  --primary-color: #00063a;
+  --secondary-color: #FECC02;
+}
+
+body {
+  margin: 0;
+}
+a, a:hover, a:visited, a:active {
+  color: inherit;
+  text-decoration: none;
+ }
+
+header {
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+  height: fit-content;
+  background-color: var(--primary-color);
+  font-family: 'Righteous', cursive;
+  letter-spacing: 2px;
+}
+#title {
+  padding-bottom: 10px;
+}
+#title h1 {
+  font-size: 3.5em;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: white;
+  margin-left: 32px;
+  padding-top: 7px;
+}
+#title span {
+  font-size: 1.5em;
+  color: var(--secondary-color);
+  letter-spacing: 15px;
+  margin-left: 41px;
+  position: relative;
+  bottom: 5px;
+}
+header ul {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  display: inline-flex;
+  color: white;
+  list-style-type: none;
+  margin-block-end: 3px;
+  font-size: 110%;
+}
+header ul li {
+  margin: 0 5px;
+  padding: 7px;
+  cursor: pointer;
+
+  text-decoration: underline;
+  text-decoration-color: var(--secondary-color);
+  text-underline-offset: 15px;
+  text-decoration-thickness: 0px;
+  transition: all 0.5s;
+}
+header ul li:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+  text-decoration-color: var(--secondary-color);
+  text-underline-offset: 10px;
+  text-decoration-thickness: 6px;
+}
+.activeNav {
+  color: var(--secondary-color);
+  text-decoration: underline;
+  text-decoration-color: var(--secondary-color);
+  text-underline-offset: 10px;
+  text-decoration-thickness: 6px;
+}
+
+
 main {
     text-align:center;
     width: 50%;

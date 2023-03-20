@@ -12,7 +12,14 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+        <!-- Font: Rigtheous -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/698848973e.js" crossorigin="anonymous"></script>
         
         <title><?= $titre ?></title>
     </head>
@@ -20,7 +27,20 @@
     <body>
 
         <header>
+            <div id="title">
+                <a href="index.php">
+                    <h1>Terrine</h1>
+                    <span>cinémas</span>
+                </a>
+            </div>
 
+            <ul>
+                <li class="<?= $activeNavHome ?>"><a href="index.php"><i class="fa-solid fa-house"></i></a></li>
+                <li class="<?= $activeNavMovies ?>"><a href="index.php?action=listMovies">FILMS</a></li>
+                <li class="<?= $activeNavActors ?>"><a href="index.php?action=listActors">ACTEURS</a></li>
+                <li class="<?= $activeNavDirectors ?>"><a href="index.php?action=listDirectors">RÉALISATEURS</a></li>
+                <li class="<?= $activeNavAdmin ?>"><a href="">Admin</a></li>
+            </ul>
         </header>
 
 

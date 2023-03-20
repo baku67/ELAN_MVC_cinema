@@ -202,6 +202,12 @@
 
 
 <?php 
+    $activeNavHome = "";
+    $activeNavMovies = "activeNav";
+    $activeNavActors = "";
+    $activeNavDirectors = "";
+    $activeNavAdmin = "";
+
     $titre = "Liste des films";
     $titre_secondaire = "Liste des films";
     $contenu = ob_get_clean();

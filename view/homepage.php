@@ -27,6 +27,12 @@
     </form>
 
 <?php 
+    $activeNavHome = "activeNav";
+    $activeNavMovies = "";
+    $activeNavActors = "";
+    $activeNavDirectors = "";
+    $activeNavAdmin = "";
+
     $contenu = ob_get_clean();
     require "view/template.php";
 ?>

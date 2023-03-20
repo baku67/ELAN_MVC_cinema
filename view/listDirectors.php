@@ -60,6 +60,12 @@
 
 
 <?php 
+    $activeNavHome = "";
+    $activeNavMovies = "";
+    $activeNavActors = "";
+    $activeNavDirectors = "activeNav";
+    $activeNavAdmin = "";
+
     $titre = "Liste des réalisateurs";
     $titre_secondaire = "Liste des réalisateurs";
     $contenu = ob_get_clean();

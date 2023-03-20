@@ -20,6 +20,13 @@
 
 <?php
     $contenu = ob_get_clean();
+
+    $activeNavHome = "";
+    $activeNavMovies = "";
+    $activeNavActors = "";
+    $activeNavDirectors = "activeNav";
+    $activeNavAdmin = "";
+
     $titre = "Détails du réalisateur";
     $titre_secondaire = "Détails du réalisateur";
 
