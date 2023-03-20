@@ -4,13 +4,8 @@
     ob_start();
 ?>
 
-    <a href="index.php?action=listMovies">Voir les films disponibles</a>
-    <br>
-    <a href="index.php?action=listActors">Voir la liste des acteurs</a>
-    <br>
-    <a href="index.php?action=listDirectors">Voir la liste des réalisateurs</a>
+    
 
-    <br><br>
 
     <p>Ajouter un genre:</p>
     <form action="index.php?action=addGenre" method="post">

@@ -45,6 +45,14 @@
 
 
         <main>
+            <div id="searchDiv">
+                <form action="search" method="post">
+                    <i id="searchIcon" class="fa-solid fa-magnifying-glass"></i>
+                    <input id="inputSearch" type="text" placeholder="Entrez un film, un acteur ou un réalisateur...">
+                    <input id="searchSubmit" type="submit" value="Go!">
+                </form>
+            </div>
+
             <h2><?= $titre_secondaire ?></h2>
             <?= $contenu ?>
         </main>
