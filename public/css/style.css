@@ -5,6 +5,15 @@
 
 body {
   margin: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 a, a:hover, a:visited, a:active {
   color: inherit;
@@ -79,7 +88,22 @@ header ul li:hover {
   text-decoration-thickness: 6px;
 }
 
+.titleSvgContainer {
+  position: absolute;
+  top: 0;
+}
 
+.titleSvgPath {
+  /* opacity: 0.8; */
+  /* transform:scale(0.8);   */
+  fill: rgba(254, 204, 2, 0); 
+  stroke: var(--secondary-color); 
+  stroke-width: 2; 
+  stroke-linecap: round; 
+  stroke-linejoin:  miter; 
+  stroke-miterlimit: 4;
+  transition: stroke 0.4s, fill 0.4s;
+}
 
 
 
@@ -186,6 +210,9 @@ main {
 .newsCard:hover {
   border-color: var(--secondary-color);
 }
+.newsCard:hover .newsImgWrapper {
+  border-bottom: 1px solid var(--secondary-color);
+}
 
 .newsContent {
   margin: 10px 13px;
@@ -197,6 +224,8 @@ main {
   width: 330px;
   height: 180px;
   overflow: hidden;
+  border-bottom: 1px solid var(--primary-color);
+  transition: all 0.4s;
 }
 
 .newsImg {
@@ -326,5 +355,26 @@ table {
   .rating label input:focus:not(:checked) ~ .icon:last-child {
     color: #000;
     text-shadow: 0 0 5px #09f;
+  }
+
+
+  footer {
+    position: relative;
+    bottom: 0;
+    /* height: 50px; */
+    background-color: var(--primary-color);
+    width: 100%;
+    margin-top: 20px;
+  }
+  footer p {
+    font-family: 'Roboto condensed', sans-serif;
+    position: relative;
+    text-align: center;
+    color: white;
+    opacity: 0.6;
+    font-weight: 100;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding: 10px 0;
   }
   

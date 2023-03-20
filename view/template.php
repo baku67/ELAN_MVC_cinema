@@ -32,6 +32,13 @@
                     <h1>Terrine</h1>
                     <span>cinémas</span>
                 </a>
+                <svg class="titleSvgContainer">
+                    <g>
+                        <path class="titleSvgPath" id="logoSvg1" d="M 53.969 38.6358 L 54.1376 78.0918 Q 54.1862 82.4688 58.6904 82.476 L 94.6658 82.5924 Q 99.8522 82.5468 99.7556 78.1884 L 99.6704 38.7756 Q 99.6704 35.1714 95.5694 35.1096 L 57.0452 35.1096 Q 54.0068 35.121 54.0002 38.589">
+                            <animate id="project_anim1" attributeName="fill" from="rgba(254, 204, 2, 0)" to="rgba(254, 204, 2, 1)" begin="2.3s" dur="0.6s" fill="freeze" repeatCount="1"></animate>
+                        </path>
+                    </g>
+                </svg>
             </div>
 
             <ul>
@@ -59,7 +66,7 @@
 
 
         <footer>
-
+            <p>Terrine cinémas - 2023</p>
         </footer>
 
     </body>
