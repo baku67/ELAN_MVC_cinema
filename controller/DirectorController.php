@@ -8,7 +8,7 @@
         public function listDirectors() {
             $pdo = Connect::seConnecter();
             $request = $pdo->query("
-                SELECT CONCAT(person_firstName, ' ', person_lastName) AS director_name, director_id
+                SELECT CONCAT(person_firstName, ' ', person_lastName) AS director_name, director_id, p.person_imgUrl
                 FROM person p
                 INNER JOIN director d ON d.person_id = p.person_id
             ");

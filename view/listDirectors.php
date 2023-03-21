@@ -7,6 +7,27 @@
         <div class="underlineMovieListTitle"></div>
     </div>
 
+
+    <ul class="directorsListGrid">
+        <?php
+        foreach ($request->fetchAll() as $dir) {
+        ?>  
+            <a href="index.php?action=directorDetails&id=<?= $dir['director_id'] ?>" class="actorsCard">
+                <li>
+                    <div class="personCardImgWrapper">
+                        <img class="personCardImg" src="<?= "./uploads/personImg/" . $dir['person_imgUrl'] ?>">
+                    </div>
+                    <p class="directorCardName"><?= $dir["director_name"] ?></p>
+                </li>
+            </a>
+        <?php
+        }
+        ?>
+    </ul>
+
+
+
+    <!-- 
     <table>
         <thead>
             <tr>
@@ -27,7 +48,7 @@
             ?>
         </tbody>
     </table>
-
+    -->
 
 
 
