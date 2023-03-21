@@ -9,6 +9,8 @@
     use Controller\GenreController;
     use Controller\RoleController;
 
+    use Controller\AdminController;
+
 
     spl_autoload_register(function ($class_name) {
         include $class_name . '.php';
@@ -20,6 +22,8 @@
     $ctrlDirector = new DirectorController();
     $ctrlGenre = new GenreController();
     $ctrlRole = new RoleController();
+
+    $ctrlAdmin = new AdminController();
 
 
 
@@ -86,7 +90,7 @@
                 break;
 
             case "admin":
-                // $ctrlAdmin->getAdmin();
+                $ctrlAdmin->getAdmin();
                 break;
     
 

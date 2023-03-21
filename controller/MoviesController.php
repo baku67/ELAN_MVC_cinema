@@ -21,11 +21,11 @@
                 FROM movie_genre
             ");
 
-            $requestDirectorsSelect = $pdo->query("
-                SELECT CONCAT(p.person_firstName, ' ', person_lastName) AS 'Director', director_id
-                FROM person p
-                INNER JOIN director d ON d.person_id = p.person_id
-            ");
+            // $requestDirectorsSelect = $pdo->query("
+            //     SELECT CONCAT(p.person_firstName, ' ', person_lastName) AS 'Director', director_id
+            //     FROM person p
+            //     INNER JOIN director d ON d.person_id = p.person_id
+            // ");
             require "view/listMovies.php";
         }
 
