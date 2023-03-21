@@ -10,16 +10,13 @@
         $minutes = ($time % 60);
         return sprintf($format, $hours, $minutes);
     }
-    
+
     ob_start();
 ?>
 
     <div class="actorDetailContainer">
 
-        <div class="subtitleDiv">
-            <h2 class="movieDetailTitle"><?= $actorDetails["actor_name"] ?></h2>
-            <div class="underlineElem"></div>
-        </div>
+        
         <a class="backButton" href="javascript:history.go(-1)">Retour</a>
 
 
@@ -30,56 +27,64 @@
 
             <div class="actorDetailInfos">
                 <!-- Infos -->
+                <div class="subtitleDiv">
+                    <h2 class="movieDetailTitle"><?= $actorDetails["actor_name"] ?></h2>
+                    <div class="underlineActorElem"></div>
+                </div>
                 <p>TEST</p>
             </div>
         </div>
 
 
         <div class="actorDetailSubtitleDiv">
-            <h2 class="movieDetailsSubtitle">Filmographie</h2>
-            <div class="subUnderlineElem"></div>
+            <h2 class="movieDetailsSubtitleActor">Filmographie</h2>
+            <div class="subUnderlineActorElem"></div>
         </div>
-        <?php 
-        foreach ($requestMovieList->fetchAll() as $movie) {
-            $movieLengthFormatted = convertToHoursMins($movie["movie_length"], '%02d h %02d m');
-            $moviePubDateYear = substr($movie["movie_frenchPublishDate"], 0, 4);
-        ?>
-            <!-- <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a><br> -->
-            
 
+        <div class="actorDetailsMovieList">
+            <?php 
+            foreach ($requestMovieList->fetchAll() as $movie) {
+                $movieLengthFormatted = convertToHoursMins($movie["movie_length"], '%02d h %02d m');
+                $moviePubDateYear = substr($movie["movie_frenchPublishDate"], 0, 4);
+            ?>
+                <!-- <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a><br> -->
+                
 
-            <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>">
-                <li class="movieCard">
-                    <div class="movieImgWrapper">
-                        <img class="movieImg" src="<?= "./uploads/moviesImg/" . $movie["movie_imgUrl"] ?>">
-                    </div>
+                
+                    <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>">
+                        <li class="movieCard">
+                            <div class="movieImgWrapper">
+                                <img class="movieImg" src="<?= "./uploads/moviesImg/" . $movie["movie_imgUrl"] ?>">
+                            </div>
 
-                    <div class="movieContentWrapper">
-                        <div class="movieTitleContainer">
-                            <p class="movieTitle yellow"><?= $movie["movie_title"] ?></p>
-                            <div class="underlineMovieTitle"></div>
-                        </div>
+                            <div class="movieContentWrapper">
+                                <div class="movieTitleContainer">
+                                    <p class="movieTitle yellow"><?= $movie["movie_title"] ?></p>
+                                    <div class="underlineMovieTitle"></div>
+                                </div>
 
-                        <!-- Affichage des genres (tags) de chaque card Movie
-                        <div class="">
-                        </div>
-                        -->
-                        
-                        <p class="movieSynopsisCard"><?= $movie["movie_synopsis"] ?></p>
+                                <!-- Affichage des genres (tags) de chaque card Movie
+                                <div class="">
+                                </div>
+                                -->
+                                
+                                <p class="movieSynopsisCard"><?= $movie["movie_synopsis"] ?></p>
 
-                        <div class="movieInfosLine">
-                            <p class="movieRating"><?= $movie["movie_rating"]?>/5 <i class="yellow fa-solid fa-star"></i></p>
-                            <p class="movieLength"><?= $movieLengthFormatted ?></p>
-                        </div>
+                                <div class="movieInfosLine">
+                                    <p class="movieRating"><?= $movie["movie_rating"]?>/5 <i class="yellow fa-solid fa-star"></i></p>
+                                    <p class="movieLength"><?= $movieLengthFormatted ?></p>
+                                </div>
 
-                        <p class="moviePubDate"><?= $moviePubDateYear ?></p>
-                    </div>
-                </li>
-            </a>
+                                <p class="moviePubDate"><?= $moviePubDateYear ?></p>
+                            </div>
+                        </li>
+                    </a>
+                 
 
-        <?php
-        }
-        ?>
+            <?php
+            }
+            ?>
+        </div>
 
     </div>
 

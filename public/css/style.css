@@ -23,6 +23,19 @@ ul {
   list-style: none;
   padding-inline-start: 0;
 }
+li {
+  list-style: none;
+}
+
+
+.actorDetailsMovieList {
+  display: inline-flex;
+  border-top: 2px solid var(--secondary-color);
+  padding-top: 20px;
+}
+.actorDetailsMovieList a {
+  margin: 0 15px;
+}
 
 h2 {
   color: var(--primary-color);
@@ -208,8 +221,15 @@ main {
   margin: 0 15px 0 0;
 }
 
+.movieDetailsSubtitleActor {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 50px;
+}
 .movieDetailsSubtitle {
   font-weight: bold;
+  font-size: 1.2em;
+  /* margin-bottom: 50px; */
 }
 
 .movieDetailSubGrid {
@@ -345,6 +365,7 @@ main {
   font-size: 1.15em;
 }
 .subtitleDiv h2 {
+  margin-block-start: 0;
   margin-block-end: 0;
 }
 .underlineElem {
@@ -359,7 +380,25 @@ main {
 .subUnderlineElem {
   width: 110%;
   position: absolute;
-  height: 9px;
+  height: 15px;
+  bottom: 3px;
+  right: 0px;
+  z-index: -99;
+  background-color: var(--secondary-color);
+}
+.underlineActorElem {
+  width: 110%;
+  position: absolute;
+  height: 20px;
+  bottom: 3px;
+  right: 0px;
+  z-index: -99;
+  background-color: var(--secondary-color);
+}
+.subUnderlineActorElem {
+  width: 110%;
+  position: absolute;
+  height: 16px;
   bottom: 3px;
   right: 0px;
   z-index: -99;
@@ -570,18 +609,19 @@ main {
 }
 
 .actorDetailsImg {
-  width: 200px;
+  width: 160px;
   border-radius: 6px;
 }
 .actorDetailContainer {
   width: 80%;
   margin: 0 auto;
+  margin-top: 50px;
 }
 .actorDetailSection1 {
   display: inline-flex;
 }
 .actorDetailInfos {
-  margin-left:40px;
+  margin-left:50px;
 }
 
 

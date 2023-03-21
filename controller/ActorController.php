@@ -30,7 +30,7 @@
             ]);
 
             $requestMovieList = $pdo->prepare("
-                SELECT m.movie_id, movie_title, role_name AS 'Rôle', movie_frenchPublishDate, movie_length, movie_imgUrl
+                SELECT m.movie_id, movie_title, role_name AS 'Rôle', movie_frenchPublishDate, movie_synopsis, movie_rating, movie_length, movie_imgUrl
                 FROM casting c
                 INNER JOIN movie m ON m.movie_id = c.movie_id
                 INNER JOIN role r ON r.role_id = c.role_id
