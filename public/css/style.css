@@ -108,11 +108,94 @@ header ul li:hover {
 
 
 main {
+    font-family: 'Roboto condensed', sans-serif;
     text-align:center;
     width: 100%;
     margin: 0 auto;
 
     margin-bottom: 40px;
+
+    position: relative;
+}
+
+.backButton {
+  position: absolute;
+  right: 20px;
+  top: 80px;
+}
+
+
+.movieListTitle {
+  font-size:1.9em;
+}
+.underlineMovieListTitle {
+  width: 110%;
+  position: absolute;
+  height: 20px;
+  bottom: 3px;
+  right: 0px;
+  z-index: -99;
+  background-color: var(--secondary-color);
+}
+
+
+.actorsListGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 25px;
+
+  width: 80%;
+  margin: 0 auto;
+}
+
+.personCardImg {
+  width: 150px;
+  height: 200px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  margin: 0 auto;
+
+  transition: all 0.5s;
+}
+
+.personCardImgWrapper {
+  width: 150px;
+  height: 180px;
+  overflow: hidden;
+}
+
+.actorsCard {
+  width: 150px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+
+  height: fit-content;
+  transition: all 0.5s;
+
+}
+
+.actorsCard:hover .personCardImg {
+  opacity: 0.7;
+  width: 120%;
+}
+
+.actorsCard:hover .actorCardName {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.actorCardName {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 7px 0;
+  transition: all 0.5s;
+
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+
 }
 
 
@@ -354,10 +437,10 @@ main {
   position: absolute;
     margin-block-start: 0;
     margin-block-end: 0;
-    right: -5px;
-    top: -15px;
+    right: 5px;
+    top: 10px;
     opacity: 0.6;
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-style: italic;
 }
 

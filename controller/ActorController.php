@@ -8,7 +8,7 @@
         public function listActors() {
             $pdo = Connect::seConnecter();
             $request = $pdo->query("
-                SELECT CONCAT(person_firstName, ' ', person_lastName) AS actorName, actor_id
+                SELECT CONCAT(person_firstName, ' ', person_lastName) AS actorName, actor_id, p.person_imgUrl
                 FROM person p
                 INNER JOIN actor a ON a.person_id = p.person_id
             ");

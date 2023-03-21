@@ -1,8 +1,11 @@
 <?php ob_start(); ?>
 
-<p>Il y a <?= $request->rowCount() ?> Réalisateurs</p>
-<a href="javascript:history.go(-1)">Retour</a>
+    <p class="countElems">Il y a <?= $request->rowCount() ?> réalisateurs</p>
 
+    <div class="subtitleDiv">
+        <h2 class="movieListTitle">Réalisateurs</h2>
+        <div class="underlineMovieListTitle"></div>
+    </div>
 
     <table>
         <thead>
@@ -36,7 +39,7 @@
     $activeNavAdmin = "";
 
     $titre = "Liste des réalisateurs";
-    $titre_secondaire = "Liste des réalisateurs";
+    $titre_secondaire = "";
     $contenu = ob_get_clean();
 
     require "view/template.php";

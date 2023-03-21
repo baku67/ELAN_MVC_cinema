@@ -4,9 +4,20 @@
     ob_start();
 ?>
 
-    <p>Détail du film: <?= $movieDetails["movie_title"] ?></p>
-    <a href="javascript:history.go(-1)">Retour</a>
+    <div class="subtitleDiv">
+        <h2><?= $movieDetails["movie_title"] ?></h2>
+        <div class="underlineElem"></div>
+    </div>
+
+    <a class="backButton" href="javascript:history.go(-1)">Retour</a>
+
+
+
+    
+
     <br>
+
+
     <?php
         if ($movieDetails["movie_imgUrl"] == "") {
         ?>
@@ -60,7 +71,7 @@
     $activeNavAdmin = "";
 
     $titre = "Détails du film";
-    $titre_secondaire = "Détails du film";
+    $titre_secondaire = "";
 
     require "view/template.php";
 ?>

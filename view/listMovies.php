@@ -82,8 +82,8 @@
 
         <div id="moviesContainer">
             <div class="subtitleDiv">
-                <h2>Catalogue</h2>
-                <div class="underlineElem"></div>
+                <h2 class="movieListTitle">Catalogue</h2>
+                <div class="underlineMovieListTitle"></div>
             </div>
 
             <div class="movieListDiv">   
