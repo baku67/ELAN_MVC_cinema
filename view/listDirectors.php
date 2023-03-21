@@ -15,7 +15,7 @@
             <a href="index.php?action=directorDetails&id=<?= $dir['director_id'] ?>" class="actorsCard">
                 <li>
                     <div class="personCardImgWrapper">
-                        <img class="personCardImg" src="<?= "./uploads/personImg/" . $dir['person_imgUrl'] ?>">
+                        <img class="personCardImg" src="<?= $dir['person_imgUrl'] ?>">
                     </div>
                     <p class="directorCardName"><?= $dir["director_name"] ?></p>
                 </li>

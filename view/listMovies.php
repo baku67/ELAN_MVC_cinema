@@ -105,7 +105,7 @@
                         <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>">
                             <li class="movieCard">
                                 <div class="movieImgWrapper">
-                                    <img class="movieImg" src="<?= "./uploads/moviesImg/" . $movie["movie_imgUrl"] ?>">
+                                    <img class="movieImg" src="<?= $movie["movie_imgUrl"] ?>">
                                 </div>
 
                                 <div class="movieContentWrapper">

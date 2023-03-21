@@ -42,7 +42,22 @@
 
             <div class="lastAddListDiv">   
                 <ul>
-                    <!-- foreach elem ajouter un <li> -->
+                <?php 
+                    foreach ($lastAddsList as $lastAdd) {
+                    ?>
+                        <!-- Meme cards pour Movie/Person (avec color diff) et différentes des Actus -->
+                        <li class="newsCard">
+                            <div class="newsImgWrapper">
+                                <img class="newsImg" src="<?= $lastAdd["imgUrl"] ?>">
+                            </div>
+                            <p class="newsTitle"><?= $lastAdd["title"] ?></p>
+                            <!-- <p class="newsContent"><?= $lastAdd["content"] ?></p> -->
+                            <p class="newsPubDate"><?= $lastAdd["publishDate"]?></p>
+                        </li>
+
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
 

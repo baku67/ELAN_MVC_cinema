@@ -22,7 +22,7 @@
 
         <div class="actorDetailSection1">
             <div>
-                <img class="actorDetailsImg" src="./uploads/personImg/<?= $actorDetails['person_imgUrl'] ?>">
+                <img class="actorDetailsImg" src="<?= $actorDetails['person_imgUrl'] ?>">
             </div>
 
             <div class="actorDetailInfos">
@@ -54,7 +54,7 @@
                     <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>">
                         <li class="movieCard">
                             <div class="movieImgWrapper">
-                                <img class="movieImg" src="<?= "./uploads/moviesImg/" . $movie["movie_imgUrl"] ?>">
+                                <img class="movieImg" src="<?= $movie["movie_imgUrl"] ?>">
                             </div>
 
                             <div class="movieContentWrapper">

@@ -39,7 +39,7 @@
                 }
                 else if ($movieDetails["movie_imgUrl"] != "") {
                 ?>
-                    <img class="movieDetailsImg" src="<?= './uploads/moviesImg/' . $movieDetails["movie_imgUrl"] ?>">
+                    <img class="movieDetailsImg" src="<?= $movieDetails["movie_imgUrl"] ?>">
                 <?php
                 }
             ?>
@@ -58,7 +58,7 @@
                     <a href="index.php?action=directorDetails&id=<?= $movieDetails["director_id"] ?>" class="actorsCard alignLeft">
 
                         <div class="personCardImgWrapper">
-                            <img class="personCardImg" src="<?= "./uploads/personImg/" . $movieDetails['person_imgUrl'] ?>">
+                            <img class="personCardImg" src="<?= $movieDetails['person_imgUrl'] ?>">
                         </div>
                         <p class="directorCardName"><?= $movieDetails['réalisateur'] ?></p>
                     </a>
@@ -102,7 +102,7 @@
                         <a href="index.php?action=actorDetails&id=<?= $actor['actor_id'] ?>" class="actorsCard">
                             <li>
                                 <div class="personCardImgWrapper">
-                                    <img class="personCardImg" src="./uploads/personImg/<?= $actor['person_imgUrl'] ?>">
+                                    <img class="personCardImg" src="<?= $actor['person_imgUrl'] ?>">
                                 </div>
                                 <p class="actorCardName"><?= $actor["acteur"] ?></p>
                                 <!-- Ajouter le role entres guillmets -->
