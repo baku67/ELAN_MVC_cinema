@@ -53,7 +53,7 @@
                 <div>
                     <div class="movieDetailSubtitleDiv">
                         <p class="movieDetailsSubtitle">Réalisateur</p>
-                        <div class="underlineElem"></div>
+                        <div class="subUnderlineElem"></div>
                     </div>
                     <a href="index.php?action=directorDetails&id=<?= $movieDetails["director_id"] ?>" class="actorsCard alignLeft">
 
@@ -67,7 +67,7 @@
                 <div class="movieDetailInfoDiv">
                     <div class="movieDetailSubtitleDiv">
                         <p class="movieDetailsSubtitle">Infos</p>
-                        <div class="underlineElem"></div>
+                        <div class="subUnderlineElem"></div>
                     </div>
                     <p>Date de sortie: <?= $movieDetails["sortie"] ?></p>
                     <p>Durée: <?= $durationformatted ?></p>
@@ -77,7 +77,7 @@
                         <?php
                         foreach ($requestGenres as $genre) {
                         ?>
-                            <a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a>
+                            <a class="movieDetailGenre" style="border: 1px solid <?= $genre['genreColor'] ?>; background-color: <?= $genre['genreColor'] ?>" href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></a>
                         <?php
                         }
                         ?>
@@ -93,7 +93,7 @@
             <div>
                 <div class="movieDetailSubtitleDiv">
                     <p class="movieDetailsSubtitle">Casting</p>
-                    <div class="underlineElem"></div>
+                    <div class="subUnderlineElem"></div>
                 </div>
                 <ul class="movieDetailActorsDiv">
                     <?php
