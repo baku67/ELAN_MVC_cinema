@@ -1,6 +1,7 @@
 <?php 
     ob_start(); 
     $genreList = $requestGenre->fetchAll();
+    $movieList = $request->fetchAll();
     // var_dump($lastMovieId);
 ?>
 
@@ -75,6 +76,75 @@
 
 
 
+        <!-- pour chaque genre, créer une section 
+            foreach ($genreList->fetchAll() as $genre) {
+        FIN -->
+
+        <div id="moviesContainer">
+            <div class="subtitleDiv">
+                <h2>Catalogue</h2>
+                <div class="underlineElem"></div>
+            </div>
+
+            <div class="movieListDiv">   
+                <ul id="movieListGrid">
+                    <?php 
+                    function convertToHoursMins($time, $format = '%02d:%02d') {
+                        if ($time < 1) {
+                            return;
+                        }
+                        $hours = floor($time / 60);
+                        $minutes = ($time % 60);
+                        return sprintf($format, $hours, $minutes);
+                    }
+
+                    foreach ($movieList as $movie) {
+                        $movieLengthFormatted = convertToHoursMins($movie["movie_length"], '%02d h %02d m');
+                        $moviePubDateYear = substr($movie["movie_frenchPublishDate"], 0, 4);
+                    ?>
+                        <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>">
+                            <li class="movieCard">
+                                <div class="movieImgWrapper">
+                                    <img class="movieImg" src="<?= "./uploads/moviesImg/" . $movie["movie_imgUrl"] ?>">
+                                </div>
+
+                                <div class="movieContentWrapper">
+                                    <div class="movieTitleContainer">
+                                        <p class="movieTitle yellow"><?= $movie["movie_title"] ?></p>
+                                        <div class="underlineMovieTitle"></div>
+                                    </div>
+
+                                    <!-- Affichage des genres (tags) de chaque card Movie
+                                    <div class="">
+                                    </div>
+                                    -->
+                                    
+                                    <p class="movieSynopsisCard"><?= $movie["movie_synopsis"] ?></p>
+
+                                    <div class="movieInfosLine">
+                                        <p class="movieRating"><?= $movie["movie_rating"]?> <i class="yellow fa-solid fa-star"></i></p>
+                                        <p class="movieLength"><?= $movieLengthFormatted ?></p>
+                                    </div>
+
+                                    <p class="moviePubDate"><?= $moviePubDateYear ?></p>
+                                </div>
+                            </li>
+                        </a>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
         <table id="movieListTable">
             <thead>
                 <tr>
@@ -85,7 +155,7 @@
             </thead>
             <tbody>
                 <?php
-                foreach($request->fetchAll() as $movie) {
+                foreach($movieList as $movie) {
                 ?>
                     <tr>
                         <td><?= $movie["movie_title"] ?></td>

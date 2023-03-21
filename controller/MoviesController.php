@@ -10,7 +10,7 @@
         public function listMovies() {
             $pdo = Connect::seConnecter();
             $request = $pdo->query("
-                SELECT movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur'
+                SELECT movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur', movie_synopsis, movie_rating, movie_frenchPublishDate, movie_imgUrl
                 FROM movie m
                 INNER JOIN director d ON m.director_id = d.director_id
                 INNER JOIN person p ON p.person_id = d.person_id
@@ -21,11 +21,15 @@
                 FROM movie_genre
             ");
 
-            // $requestDirectorsSelect = $pdo->query("
-            //     SELECT CONCAT(p.person_firstName, ' ', person_lastName) AS 'Director', director_id
-            //     FROM person p
-            //     INNER JOIN director d ON d.person_id = p.person_id
+            //** Films par genre (mauvaise idéé ? filtres dynamiques plutot)
+            // $actionMovies = $pdo->query("
+            //     SELECT * FROM movie m
+            //     INNER JOIN moviegenrelist mgl ON mgl.movie_id = m.movie_id
+            //     INNER JOIN movie_genre mg ON mg.movieGenre_id = mgl.movieGenre_id
+            //     WHERE mgl.movieGenre_id = 3
             // ");
+
+
             require "view/listMovies.php";
         }
 
