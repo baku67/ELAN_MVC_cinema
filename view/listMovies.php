@@ -122,7 +122,7 @@
                                     <p class="movieSynopsisCard"><?= $movie["movie_synopsis"] ?></p>
 
                                     <div class="movieInfosLine">
-                                        <p class="movieRating"><?= $movie["movie_rating"]?> <i class="yellow fa-solid fa-star"></i></p>
+                                        <p class="movieRating"><?= $movie["movie_rating"]?>/5 <i class="yellow fa-solid fa-star"></i></p>
                                         <p class="movieLength"><?= $movieLengthFormatted ?></p>
                                     </div>
 

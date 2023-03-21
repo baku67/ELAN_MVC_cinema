@@ -91,7 +91,7 @@
             $pdo = Connect::seConnecter();
 
             $request2 = $pdo->prepare("
-                SELECT movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur', movie_imgUrl, d.director_id
+                SELECT movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur', movie_imgUrl, d.director_id, p.person_imgUrl, movie_rating
                 FROM movie m
                 INNER JOIN director d ON m.director_id = d.director_id
                 INNER JOIN person p ON p.person_id = d.person_id
@@ -102,7 +102,7 @@
             ]);
 
             $requestCasting = $pdo->prepare("
-                SELECT m.movie_id, movie_title, CONCAT(p.person_firstName, ' ', p.person_lastName) AS 'acteur', person_gender, a.actor_id, role_name
+                SELECT m.movie_id, movie_title, CONCAT(p.person_firstName, ' ', p.person_lastName) AS 'acteur', person_gender, a.actor_id, role_name, p.person_imgUrl
                 FROM casting
                 INNER JOIN movie m ON m.movie_id = casting.movie_id
                 INNER JOIN actor a ON casting.actor_id = a.actor_id

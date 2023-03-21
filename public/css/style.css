@@ -181,6 +181,7 @@ main {
 }
 
 .actorsCard {
+  display: block;
   margin: 0 auto;
   width: 150px;
   border: 1px solid rgba(0, 0, 0, 0.4);
@@ -188,7 +189,33 @@ main {
 
   height: fit-content;
   transition: all 0.5s;
+}
+.alignLeft {
+  margin: 0;
+}
 
+.movieDetailActorsDiv {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  display: inline-flex;
+  margin-bottom: 25px;
+}
+.movieDetailActorsDiv a {
+  margin: 0 15px 0 0;
+}
+
+.movieDetailsSubtitle {
+  font-weight: bold;
+}
+
+.movieDetailSubGrid {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 25px;
+}
+.movieDetailInfoDiv {
+  width: 50%;
 }
 
 .actorsCard:hover {
@@ -216,6 +243,7 @@ main {
   margin-block-end: 0;
   padding: 7px 0;
   transition: all 0.5s;
+  text-align: center;
 
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -228,6 +256,7 @@ main {
   color: var(--primary-color);
 }
 .directorCardName {
+  text-align: center;
   font-weight: bold;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -320,6 +349,16 @@ main {
   background-color: var(--secondary-color);
 }
 
+.movieDetailSubtitleDiv {
+  width: fit-content;
+  position: relative;
+  margin-bottom: 35px;
+  font-size: 1.15em;
+}
+.movieDetailSubtitleDiv h2 {
+  margin-block-end: 0;
+}
+
 .movieTitleContainer {
   width: fit-content;
   margin: 0 auto;
@@ -399,6 +438,39 @@ main {
     opacity: 0.6;
 }
 
+.movieDetailGrid {
+  display: grid;
+  grid-template-columns: 0.6fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 100px;
+  grid-row-gap: 15px;
+
+  width: 80%;
+  margin: 0 auto;
+}
+
+.movieDetailsImg {
+  width: 100%;
+  border-radius: 5px;
+  /* max-width:  */
+}
+
+.movieDetailTitle {
+  font-size: 1.8em;
+}
+
+.movieDetailsInfos {
+  text-align: left;
+}
+
+.movieDetailDirectorDiv {
+  text-align: center;
+  width: fit-content;
+}
+.movieDetailDirectorDiv p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
 
 .movieCard {
   width: 260px;
