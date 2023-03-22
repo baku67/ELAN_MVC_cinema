@@ -617,6 +617,25 @@ main {
 }
 
 
+.filArianneDiv {
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 90%;
+}
+.filArianneTxt1 {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.filArianneTxt2 {
+  
+}
+.arianneArrow {
+  color: var(--secondary-color);
+  text-shadow: 0 0 black;
+  margin: 0 3px;
+}
+
 .styleMovieLabel {
   background-color: #00063aa4;
   color: #fecc02;

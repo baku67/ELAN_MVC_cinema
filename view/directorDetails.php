@@ -19,6 +19,13 @@
     ob_start();
 ?>
 
+    <div class="filArianneDiv">
+        <a href="index.php?action=listDirectors"><span class="filArianneTxt1">Réalisateurs</span></a>
+        <i class="arianneArrow fa-solid fa-arrow-right"></i> 
+        <a href=""><span class="filArianneTxt2"><?= $directorDetails["director_name"] ?></span></a>
+    </div>
+
+
     <div class="actorDetailContainer">
 
         

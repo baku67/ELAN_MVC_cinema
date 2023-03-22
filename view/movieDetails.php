@@ -15,14 +15,19 @@
     ob_start();
 ?>
 
+    <div class="filArianneDiv">
+        <a href="index.php?action=listMovies"><span class="filArianneTxt1">Films</span></a>
+        <i class="arianneArrow fa-solid fa-arrow-right"></i> 
+        <a href=""><span class="filArianneTxt2"><?= $movieDetails["movie_title"] ?></span></a>
+    </div>
+
+
     <div class="subtitleDiv">
         <h2 class="movieDetailTitle"><?= $movieDetails["movie_title"] ?></h2>
         <div class="underlineElem"></div>
     </div>
 
     <a class="backButton" href="javascript:history.go(-1)">Retour</a>
-
-
 
     
 
