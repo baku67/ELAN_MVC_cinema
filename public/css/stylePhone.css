@@ -1,0 +1,52 @@
+@media only screen and (max-width:425px) {
+
+    #gridHomepage {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-template-areas: 
+        "."
+        ".";
+        font-family: 'Roboto Condensed', sans-serif;
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+
+    header ul {
+        font-size: 50%;
+        right: 0;
+    }
+
+    #title {
+        padding-bottom: 20px;
+    }
+
+    #title h1 {
+        font-size: 2em;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: white;
+        margin-left: 10px;
+        padding-top: 0px;
+    }
+    #title span {
+        font-size: 0.8em;
+        color: var(--secondary-color);
+        letter-spacing: 10px;
+        margin-left: 16px;
+        position: relative;
+        bottom: 8px;
+    }
+
+    .titleSvgContainer {
+        display: none;
+    }
+    
+    #searchDiv form {
+        width: 90%;
+    }
+
+
+}

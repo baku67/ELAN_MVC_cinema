@@ -1,6 +1,7 @@
 <?php
     $titre = "Accueil";
     $titre_secondaire = "";
+    $style = "";
     ob_start();
 ?>
 
@@ -43,16 +44,33 @@
             <div class="lastAddListDiv">   
                 <ul>
                 <?php 
+                    $todaysDate = new DateTime (date('Y-m-d'));
+                
                     foreach ($lastAddsList as $lastAdd) {
+                        $addDate = new DateTime ($lastAdd["create_Time"]);
+                        $delaiPublication = $addDate->diff($todaysDate)->format('%dj %Hh');  
+                        
+                        if ($lastAdd["type"] == "movie") {
+                            $style = "newsMovie";
+                            $styleLabel = "styleMovieLabel";
+                        }
+                        else if ($lastAdd["type"] == "person") {
+                            $style = "newsPerson";
+                            $styleLabel = "stylePersonLabel";
+                        }
+                        else {
+                            $style = "HS";
+                        }
                     ?>
-                        <!-- Meme cards pour Movie/Person (avec color diff) et différentes des Actus -->
-                        <li class="newsCard">
-                            <div class="newsImgWrapper">
-                                <img class="newsImg" src="<?= $lastAdd["imgUrl"] ?>">
+                        <!-- Englober avec des <a href="detail"> oula -->
+                        <li class="lastAddCard">
+                            <p class="lastAddType <?= $styleLabel ?>"><?= ucfirst($lastAdd["type"]) ?></p>
+                            <!-- Ptit label/tag acteur/film meme color et voir pour le bg gradient hover color -->
+                            <div class="lastAddImgWrapper <?= $style ?>">
+                                <img class="lastAddImg" src="<?= $lastAdd["imgUrl"] ?>">
                             </div>
-                            <p class="newsTitle"><?= $lastAdd["title"] ?></p>
-                            <!-- <p class="newsContent"><?= $lastAdd["content"] ?></p> -->
-                            <p class="newsPubDate"><?= $lastAdd["publishDate"]?></p>
+                            <p class="lastAddTitle"><?= $lastAdd["title"] ?></p>
+                            <p class="lastAddPubDate"><?= "il y a " . $delaiPublication ?></p>
                         </li>
 
                     <?php
