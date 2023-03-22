@@ -1,5 +1,16 @@
 @media only screen and (max-width:425px) {
 
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Hide scrollbar for IE, Edge and Firefox */
+    body {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
     #gridHomepage {
         display: grid;
         grid-template-columns: 1fr;
@@ -48,5 +59,70 @@
         width: 90%;
     }
 
+    .actorsListGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 15px;
+        grid-row-gap: 25px;
+        width: 92%;
+        margin: 0 auto;
+    }
+
+    .directorsListGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 15px;
+        grid-row-gap: 25px;
+        width: 92%;
+        margin: 0 auto;
+    }
+
+    .actorDetailsMovieList {
+        flex-direction: column;
+    }
+
+
+    .movieDetailGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-column-gap: 100px;
+        grid-row-gap: 15px;
+        width: 92%;
+        margin: 0 auto;
+    }
+
+    .adminContainer {
+        width: 92%;
+        padding-top:0;
+    }
+    .genreCheckBoxDiv {
+        display: inline-flex;
+        flex-wrap: wrap;
+    }
+
+    @keyframes animFormShow {
+        from {
+          clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+          max-height: 0;
+        }
+        to {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          max-height: 700px;
+        }
+      }
+      @keyframes animFormCollapse {
+        from {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          max-height: 700px;
+        }
+        to {
+          clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+          max-height: 0;
+        }
+      }
+      
 
 }
