@@ -636,6 +636,13 @@ main {
   margin: 0 3px;
 }
 
+
+.adminContainer {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 8px;
+}
+
 .styleMovieLabel {
   background-color: #00063aa4;
   color: #fecc02;
@@ -914,10 +921,106 @@ table {
 
 
 .form {
-    padding: 15px;
-    border-radius: 5px;
-    border: 2px solid rgba(0, 0, 0, 0.3);
-    margin: 15px auto;
+    /* padding: 15px; */
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+
+    border: 3px solid var(--primary-color);
+    margin: 0px auto;
+
+    background-color: var(--secondary-color);
+    transition: all 0.4s;
+}
+.formTitle {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 1em 0;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  cursor: pointer;
+  transition: all 0.4s;
+
+}
+.formContent {
+  padding: 15px;
+  /* clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%); */
+  height: 100%;
+  transition: all 0.4s;
+}
+.formSubmitButton {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 5px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.4s;
+  margin-top: 20px;
+}
+.formSubmitButton:hover {
+  padding: 5px 27px;
+  letter-spacing: 1px;
+}
+
+#chevronCollapse {
+  margin: 0 15px;
+}
+.rotateChevronShow {
+  animation: animChevronShow 0.5s ease forwards 1;
+}
+@keyframes animChevronShow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+.rotateChevronCollapse {
+  animation: animChevronCollapse 0.5s ease forwards 1;
+}
+@keyframes animChevronCollapse {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.animFormShow {
+  animation: animFormShow 1s ease forwards 1, removeElem 0.1s 1s ease forwards 1;
+}
+.animFormCollapse {
+  animation: animFormCollapse 1s ease forwards 1, removeElem 0.1s 1s ease forwards 1 !important;
+}
+
+@keyframes animFormShow {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+    max-height: 0;
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    max-height: 500px;
+  }
+}
+@keyframes animFormCollapse {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    max-height: 500px;
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+    max-height: 0;
+  }
+}
+
+
+#formMovieContent {
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+    max-height: 0px;
+    overflow: hidden;
 }
 
 
@@ -975,17 +1078,19 @@ table {
   }
   
   .rating label:last-child .icon {
-    color: #000;
+    color: var(--secondary-color);
+    text-shadow: 0 0 2px var(--primary-color);
+
   }
   
   .rating:not(:hover) label input:checked ~ .icon,
   .rating:hover label:hover input ~ .icon {
-    color: #09f;
+    color: var(--primary-color);
   }
   
   .rating label input:focus:not(:checked) ~ .icon:last-child {
-    color: #000;
-    text-shadow: 0 0 5px #09f;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
   }
 
 

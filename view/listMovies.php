@@ -145,7 +145,7 @@
 
 
 
-        <table id="movieListTable">
+        <!-- <table id="movieListTable">
             <thead>
                 <tr>
                     <th>Titre</th>
@@ -166,7 +166,7 @@
                 }
                 ?>
             </tbody>
-        </table>
+        </table> -->
 
 
         <script>
