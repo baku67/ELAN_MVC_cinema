@@ -20,7 +20,7 @@
             $pdo = Connect::seConnecter();
 
             $request2 = $pdo->prepare("
-                SELECT p.person_id, CONCAT(person_firstName, ' ', person_lastName) AS director_name, person_gender, person_birthDate
+                SELECT p.person_id, CONCAT(person_firstName, ' ', person_lastName) AS director_name, person_gender, person_birthDate, person_imgUrl
                 FROM director d
                 INNER JOIN person p ON p.person_id = d.person_id
                 WHERE d.director_id = :director_id
@@ -30,11 +30,21 @@
             ]);
 
             $requestMovieList = $pdo->prepare("
-                SELECT movie_id, movie_title, YEAR(movie_frenchPublishDate)
-                FROM movie m 
-                WHERE director_id = :directorId
+                SELECT movie_id, movie_title, movie_frenchPublishDate, movie_synopsis, movie_rating, movie_length, movie_imgUrl
+                FROM movie
+                WHERE (director_id = :directorId)
+                ORDER BY movie_frenchPublishDate DESC
             ");
             $requestMovieList->execute([
+                "directorId" => $directorId
+            ]);
+
+            $requestMovieCount = $pdo->prepare("
+            SELECT COUNT(m.movie_id) AS movie_count
+            FROM movie m 
+            WHERE director_id = :directorId
+            ");
+            $requestMovieCount->execute([
                 "directorId" => $directorId
             ]);
 

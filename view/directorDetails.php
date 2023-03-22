@@ -1,22 +1,101 @@
 <?php
 
     $directorDetails = $request2->fetch();
+    $movieCount = $requestMovieCount->fetch();
+
+    $todaysDate = new DateTime (date('Y-m-d'));
+    $birthDate = new DateTime ($directorDetails['person_birthDate']);
+    $age = $birthDate->diff($todaysDate)->format('%y');
+
+    function convertToHoursMins($time, $format = '%02d:%02d') {
+        if ($time < 1) {
+            return;
+        }
+        $hours = floor($time / 60);
+        $minutes = ($time % 60);
+        return sprintf($format, $hours, $minutes);
+    }
+
     ob_start();
 ?>
 
-    <p>Réalisateur: <?= $directorDetails["director_name"] ?></p>
-    <a href="javascript:history.go(-1)">Retour</a>
-    <br>
-    <p>Sexe: <?= $directorDetails["person_gender"] ?></p>
-    <p>Date de naissance: <?= $directorDetails["person_birthDate"] ?></p>
+    <div class="actorDetailContainer">
 
-    <h3>Filmographie</h3>
-    <?php foreach ($requestMovieList->fetchAll() as $movie) {
-    ?>
-        <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a>
-    <?php
-    }
-    ?>
+        
+        <a class="backButton" href="javascript:history.go(-1)">Retour</a>
+
+
+        <div class="actorDetailSection1">
+            <div>
+                <img class="actorDetailsImg" src="<?= $directorDetails['person_imgUrl'] ?>">
+            </div>
+
+            <div class="actorDetailInfos">
+                <!-- Infos -->
+                <div class="subtitleDiv">
+                    <h2 class="movieDetailTitle"><?= $directorDetails["director_name"] ?></h2>
+                    <div class="underlineActorElem"></div>
+                </div>
+
+                <div class="actorDetailInfoContent">
+                    <p><span class="detailStrong"><?= $age ?></span>&nbsp; ans</p>
+                    <p><span class="detailStrong yellowStrong"><?= $movieCount['movie_count'] ?></span>&nbsp; films</p>
+                </div>  
+            </div>
+        </div>
+
+
+        <div class="actorDetailSubtitleDiv">
+            <h2 class="movieDetailsSubtitleActor">Filmographie</h2>
+            <div class="subUnderlineActorElem"></div>
+        </div>
+
+        <div class="actorDetailsMovieList">
+            <?php 
+            foreach ($requestMovieList->fetchAll() as $movie) {
+                $movieLengthFormatted = convertToHoursMins($movie["movie_length"], '%02d h %02d m');
+                $moviePubDateYear = substr($movie["movie_frenchPublishDate"], 0, 4);
+            ?>
+                <!-- <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>"><?= $movie["movie_title"] ?></a><br> -->
+                
+
+                
+                    <a href="index.php?action=movieDetails&id=<?= $movie["movie_id"] ?>">
+                        <li class="movieCard">
+                            <div class="movieImgWrapper">
+                                <img class="movieImg" src="<?= $movie["movie_imgUrl"] ?>">
+                            </div>
+
+                            <div class="movieContentWrapper">
+                                <div class="movieTitleContainer">
+                                    <p class="movieTitle yellow"><?= $movie["movie_title"] ?></p>
+                                    <div class="underlineMovieTitle"></div>
+                                </div>
+
+                                <!-- Affichage des genres (tags) de chaque card Movie
+                                <div class="">
+                                </div>
+                                -->
+                                
+                                <p class="movieSynopsisCard"><?= $movie["movie_synopsis"] ?></p>
+
+                                <div class="movieInfosLine">
+                                    <p class="movieRating"><?= $movie["movie_rating"]?>/5 <i class="yellow fa-solid fa-star"></i></p>
+                                    <p class="movieLength"><?= $movieLengthFormatted ?></p>
+                                </div>
+
+                                <p class="moviePubDate"><?= $moviePubDateYear ?></p>
+                            </div>
+                        </li>
+                    </a>
+                 
+
+            <?php
+            }
+            ?>
+        </div>
+
+    </div>
 
 <?php
     $contenu = ob_get_clean();
@@ -27,8 +106,8 @@
     $activeNavDirectors = "activeNav";
     $activeNavAdmin = "";
 
-    $titre = "Détails du réalisateur";
-    $titre_secondaire = "Détails du réalisateur";
+    $titre = "Détails de l'acteur";
+    $titre_secondaire = "";
 
     require "view/template.php";
 ?>

@@ -42,7 +42,7 @@
             </div>
 
             <div class="lastAddListDiv">   
-                <ul>
+                <ul class="lastAddList">
                 <?php 
                     $todaysDate = new DateTime (date('Y-m-d'));
                 

@@ -603,6 +603,10 @@ main {
   transform: scale(1.08);
 }
 
+.lastAddList {
+  display: inline-flex;
+  flex-direction: column;
+}
 
 .newsMovie {
   border-right: 3px solid var(--primary-color);
