@@ -5,7 +5,69 @@
     ob_start();
 ?>
 
+    <script>
+        $( function() {
+            $.widget( "custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function( ul, item ) {
+                var li = $( "<li>" ),
+                wrapper = $( "<div>", { text: item.label } );
+        
+                if ( item.disabled ) {
+                li.addClass( "ui-state-disabled" );
+                }
+        
+                $( "<span>", {
+                style: item.element.attr( "data-style" ),
+                "class": "ui-icon " + item.element.attr( "data-class" )
+                })
+                .appendTo( wrapper );
+        
+                return li.append( wrapper ).appendTo( ul );
+            }
+            });
+        
+            $( "#people" )
+            .iconselectmenu()
+            .iconselectmenu( "menuWidget")
+                .addClass( "ui-menu-icons avatar" );
+
+            $( "#actorsSelect" )
+            .iconselectmenu()
+            .iconselectmenu( "menuWidget")
+                .addClass( "ui-menu-icons avatar" );
+        } );
+    </script>
+
+    <style>
+        h2 {
+        margin: 30px 0 0 0;
+        }
+        fieldset {
+        border: 0;
+        }
+        label {
+        display: block;
+        }
+    
+        /* select with CSS avatar icons */
+        option.avatar {
+        background-repeat: no-repeat !important;
+        padding-left: 20px;
+        }
+        .avatar .ui-icon {
+        background-position: left top;
+        }
+    </style>
+
+
+
+
     <div class="adminContainer">
+
+        <div class="subtitleDiv">
+            <h2 class="movieListTitle">Espace Administrateur</h2>
+            <div class="underlineMovieListTitle"></div>
+        </div>
     
         <div class="formMovieWrapper">
             <h3 id="formMovieTitle" class="formTitle">Ajouter un film <i id="chevronCollapse" class="fa-solid fa-chevron-down"></i></h3>
@@ -15,50 +77,74 @@
                 <div class="formContent">
                     <input type="hidden" name="type" value="addMovieForm">
                     <div>
-                        <label for="movieTitle">Titre:</label>
-                        <input name="movieTitle" type="text" placeholder="Ex: Titanic, Star Wars, ...">
+                        <label class="labelLight" for="movieTitle">Titre:</label>
+                        <input class="inputForm" name="movieTitle" type="text" placeholder="Ex: Titanic, Star Wars, ...">
                     </div>
                     <div>
-                        <label for="moviePublishDate">Année de sortie:</label>
+                        <label class="labelLight" for="moviePublishDate">Année de sortie:</label>
                         <!-- <input name="moviePublishDate" type="number" min="1900" max="2099" step="1" value="2023"> -->
-                        <input name="moviePublishDate" type="date">
+                        <input class="inputForm" name="moviePublishDate" type="date">
                     </div>
                     <div>
-                        <label for="movieLength">Durée:</label>
-                        <input name="movieLength" type="number" placeholder="en minutes">
+                        <label class="labelLight" for="movieLength">Durée:</label>
+                        <input class="inputForm" name="movieLength" type="number" placeholder="En minutes">
                     </div>
                     <div>
-                        <label for="movieSynopsis">Synopsis:</label>
-                        <textarea name="movieSynopsis"></textarea>
+                        <label class="labelSynopsis" for="movieSynopsis">Synopsis:</label>
+                        <textarea class="inputForm textareaSynopsis" rows="7" name="movieSynopsis"></textarea>
                     </div>
                     <div>
-                        <label for="movieDirector">Réalisateur:</label>
-                        <select name="movieDirector">
+                        <label class="labelLight" for="people">Réalisateur:</label>
+                        <select id="people" class="inputForm" name="movieDirector">
                             <option value="">-- Veuillez choisir un réalisateur</option>
                             <?php 
                                 foreach ($requestDirectorsSelect->fetchAll() as $director) {
+                                    $pathAvatar = $director["person_imgUrl"];
+                                    $finalPath = str_replace("personImg/", "personImg/avatarSelect/", $pathAvatar);
                             ?>
-                                    <option value="<?= $director["director_id"] ?>"><?= $director["Director"] ?></option>
+
+                                    <option data-class="avatar" data-style="background-image: url(<?= $finalPath ?>);" value="<?= $director["director_id"] ?>">
+                                        <!-- <img src="<?= $director["person_imgUrl"] ?>"> -->
+                                        <?= $director["Director"] ?>
+                                    </option>
                             <?php
                                 }
                             ?>
                         </select>
                     </div>
                     <div>
-                        <label for="file">Affiche:</label>
-                        <input type="file" id="file" name="file" accept="image/png, image/jpeg">
+                        <label class="labelLight" for="actorsSelect">Acteur n°1</label>
+                        <select id="actorsSelect" class="inputForm" name="movieDirector">
+                            <option value="">-- Veuillez choisir un acteur</option>
+                            <?php 
+                                foreach ($requestActorsSelect->fetchAll() as $director) {
+                                    $pathAvatar = $director["person_imgUrl"];
+                                    $finalPath = str_replace("personImg/", "personImg/avatarSelect/", $pathAvatar);
+                            ?>
+
+                                    <option data-class="avatar" data-style="background-image: url(<?= $finalPath ?>);" value="<?= $director["actor_id"] ?>">
+                                        <!-- <img src="<?= $director["person_imgUrl"] ?>"> -->
+                                        <?= $director["actorName"] ?>
+                                    </option>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="labelLight" for="file">Affiche:</label>
+                        <input class="inputForm" type="file" id="file" name="file" accept="image/png, image/jpeg">
                     </div>
 
 
                     <div>
-                        <p></p>
-                        <fieldset>
-                            <legend>Genre(s):</legend>
+                        <fieldset class="genreCheckBoxDiv">
+                            <legend class="labelLight">Genre(s):</legend>
                             <?php
                             foreach($genreList as $genre) {
                             ?>
-                                <label for="<?= $genre["movieGenre_id"] ?>"><?= $genre["movieGenre_label"] ?></label>
                                 <input value="<?= $genre["movieGenre_id"] ?>" name="genre[]" id="<?= $genre["movieGenre_id"] ?>" type="checkbox">
+                                <label for="<?= $genre["movieGenre_id"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?></label>
                             <?php
                             }
                             ?>
@@ -116,10 +202,15 @@
                         if (document.getElementById("formMovieContent").className == "form" || document.getElementById("formMovieContent").className == "form animFormCollapse") {
                             document.getElementById("formMovieContent").classList.toggle("animFormShow");
                             document.getElementById("chevronCollapse").classList.toggle("rotateChevronShow");
+                            document.getElementById("formMovieTitle").style.borderBottomLeftRadius = "0px";
+                            document.getElementById("formMovieTitle").style.borderBottomRightRadius = "0px";
+
                         }
                         else {
                             document.getElementById("formMovieContent").classList.toggle("animFormCollapse");
                             document.getElementById("chevronCollapse").classList.toggle("rotateChevronCollapse");
+                            document.getElementById("formMovieTitle").style.borderBottomLeftRadius = "7px";
+                            document.getElementById("formMovieTitle").style.borderBottomRightRadius = "7px";
                         }
                     })
                 </script>

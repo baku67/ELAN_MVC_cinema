@@ -1,9 +1,9 @@
 window.onload = function() {
 
     
-    $(document).ready( function () {
-        $('#movieListTable').DataTable();
-    } );
+    // $(document).ready( function () {
+    //     $('#movieListTable').DataTable();
+    // } );
 
     // Draw du logo Title
     var logoPathes = document.querySelectorAll('.titleSvgContainer path');

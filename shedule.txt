@@ -1,0 +1,9 @@
+Adapter les forms admin
+Responsive
+intégrer iframe a portfolio
+
+Pour acteurs:
+mettre 2-3 inputs select et possibiliter d'en ajouter (bouton +)
+img inside select (pour les forms admin): https://jqueryui.com/selectmenu/#custom_render
+
+Pour réalisateur: même select mais 1 input
