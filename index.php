@@ -12,9 +12,17 @@
     use Controller\AdminController;
 
 
-    spl_autoload_register(function ($class_name) {
-        include $class_name . '.php';
-    });
+    // spl_autoload_register(function ($class_name) {
+    //     include $class_name . '.php';
+    // });
+    include "controller/HomeController.php";
+    include "controller/ActorController.php";
+    include "controller/AdminController.php";
+    include "controller/DirectorController.php";
+    include "controller/GenreController.php";
+    include "controller/MoviesController.php";
+    include "controller/RoleController.php";
+    include "model/connect.php";
 
     $ctrlMovies = new MoviesController();
     $ctrlHome = new HomeController();
