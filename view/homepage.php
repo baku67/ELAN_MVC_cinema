@@ -53,25 +53,34 @@
                         if ($lastAdd["type"] == "movie") {
                             $style = "newsMovie";
                             $styleLabel = "styleMovieLabel";
+                            $actionDetailUrl = "movie";
                         }
-                        else if ($lastAdd["type"] == "person") {
+                        else if ($lastAdd["type"] == "actor") {
                             $style = "newsPerson";
                             $styleLabel = "stylePersonLabel";
+                            $actionDetailUrl = "actor";
+                        }
+                        else if ($lastAdd["type"] == "director") {
+                            $style = "newsPerson";
+                            $styleLabel = "stylePersonLabel";
+                            $actionDetailUrl = "director";
                         }
                         else {
                             $style = "HS";
                         }
                     ?>
                         <!-- Englober avec des <a href="detail"> oula -->
-                        <li class="lastAddCard">
-                            <p class="lastAddType <?= $styleLabel ?>"><?= ucfirst($lastAdd["type"]) ?></p>
-                            <!-- Ptit label/tag acteur/film meme color et voir pour le bg gradient hover color -->
-                            <div class="lastAddImgWrapper <?= $style ?>">
-                                <img class="lastAddImg" src="<?= $lastAdd["imgUrl"] ?>">
-                            </div>
-                            <p class="lastAddTitle"><?= $lastAdd["title"] ?></p>
-                            <p class="lastAddPubDate"><?= "il y a " . $delaiPublication ?></p>
-                        </li>
+                        <a href="index.php?action=<?= $actionDetailUrl ?>Details&id=<?= $lastAdd["id"] ?>">
+                            <li class="lastAddCard">
+                                <p class="lastAddType <?= $styleLabel ?>"><?= ucfirst($lastAdd["type"]) ?></p>
+                                <!-- Ptit label/tag acteur/film meme color et voir pour le bg gradient hover color -->
+                                <div class="lastAddImgWrapper <?= $style ?>">
+                                    <img class="lastAddImg" src="<?= $lastAdd["imgUrl"] ?>">
+                                </div>
+                                <p class="lastAddTitle"><?= $lastAdd["title"] ?></p>
+                                <p class="lastAddPubDate"><?= "il y a " . $delaiPublication ?></p>
+                            </li>
+                        </a>
 
                     <?php
                     }
