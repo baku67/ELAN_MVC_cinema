@@ -41,6 +41,19 @@
                 "actorId" => $actorId
             ]);
 
+            $requestMovieCount = $pdo->prepare("
+                SELECT COUNT(m.movie_id) AS movie_count
+                FROM movie m 
+                INNER JOIN casting c ON c.movie_id = m.movie_id
+                INNER JOIN actor a ON a.actor_id = c.actor_id
+                INNER JOIN person p ON p.person_id = a.person_id
+                WHERE a.actor_id = :actorId
+            ");
+            $requestMovieCount->execute([
+                "actorId" => $actorId
+            ]);
+
+
             require "view/actorDetails.php";
 
         }

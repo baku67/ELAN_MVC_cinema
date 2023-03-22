@@ -1,6 +1,11 @@
 <?php
 
     $actorDetails = $request2->fetch();
+    $movieCount = $requestMovieCount->fetch();
+
+    $todaysDate = new DateTime (date('Y-m-d'));
+    $birthDate = new DateTime ($actorDetails['person_birthDate']);
+    $age = $birthDate->diff($todaysDate)->format('%y');
 
     function convertToHoursMins($time, $format = '%02d:%02d') {
         if ($time < 1) {
@@ -31,7 +36,11 @@
                     <h2 class="movieDetailTitle"><?= $actorDetails["actor_name"] ?></h2>
                     <div class="underlineActorElem"></div>
                 </div>
-                <p>TEST</p>
+
+                <div class="actorDetailInfoContent">
+                    <p><span class="detailStrong"><?= $age ?></span>&nbsp; ans</p>
+                    <p><span class="detailStrong yellowStrong"><?= $movieCount['movie_count'] ?></span>&nbsp; films</p>
+                </div>  
             </div>
         </div>
 

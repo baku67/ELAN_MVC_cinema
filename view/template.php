@@ -42,11 +42,24 @@
             </div>
 
             <ul>
-                <li class="<?= $activeNavHome ?>"><a href="index.php"><i class="fa-solid fa-house"></i></a></li>
-                <li class="<?= $activeNavMovies ?>"><a href="index.php?action=listMovies">FILMS</a></li>
-                <li class="<?= $activeNavActors ?>"><a href="index.php?action=listActors">ACTEURS</a></li>
-                <li class="<?= $activeNavDirectors ?>"><a href="index.php?action=listDirectors">RÉALISATEURS</a></li>
-                <li class="<?= $activeNavAdmin ?>"><a href="index.php?action=admin">Admin</a></li>
+                <a href="index.php">
+                    <li class="<?= $activeNavHome ?>">
+                        <i class="fa-solid fa-house"></i>
+                    </li>
+                </a>
+                <a href="index.php?action=listMovies">
+                    <li class="<?= $activeNavMovies ?>">
+                        FILMS
+                    </li>
+                </a>
+                <a href="index.php?action=listActors">
+                    <li class="<?= $activeNavActors ?>">ACTEURS</li>
+                </a>
+                <a href="index.php?action=listDirectors">
+                    <li class="<?= $activeNavDirectors ?>">RÉALISATEURS</li></a>
+                <a href="index.php?action=admin">
+                    <li class="<?= $activeNavAdmin ?>">Admin</li>
+                </a>
             </ul>
         </header>
 

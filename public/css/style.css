@@ -49,6 +49,8 @@ header {
   background-color: var(--primary-color);
   font-family: 'Righteous', cursive;
   letter-spacing: 2px;
+
+  overflow: hidden;
 }
 #title {
   padding-bottom: 10px;
@@ -94,15 +96,15 @@ header ul li:hover {
   color: var(--secondary-color);
   text-decoration: underline;
   text-decoration-color: var(--secondary-color);
-  text-underline-offset: 8px;
-  text-decoration-thickness: 6px;
+  text-underline-offset: 11px;
+  text-decoration-thickness: 5px;
 }
 .activeNav {
   color: var(--secondary-color);
   text-decoration: underline;
   text-decoration-color: var(--secondary-color);
-  text-underline-offset: 8px;
-  text-decoration-thickness: 6px;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 5px;
 }
 
 .titleSvgContainer {
@@ -121,6 +123,17 @@ header ul li:hover {
   stroke-miterlimit: 4;
   transition: stroke 0.4s, fill 0.4s;
 }
+
+.actorDetailInfoContent {
+  text-align: left;
+}
+.detailStrong {
+  font-weight: 900;
+  color: var(--primary-color);
+  font-size: 1.4em;
+  /* text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3), 1px -1px 0 rgba(0, 0, 0, 0.3), -1px 1px 0 rgba(0, 0, 0, 0.3), -1px -1px 0 rgba(0, 0, 0, 0.3), 1px 0px 0 rgba(0, 0, 0, 0.3), 0px 1px 0 rgba(0, 0, 0, 0.3), -1px 0px 0 rgba(0, 0, 0, 0.3), 0px -1px 0 rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.3); */
+}
+
 
 
 
@@ -355,6 +368,8 @@ main {
 
   width: 75%;
   margin: 0 auto;
+  margin-top: 50px;
+
 }
 
 .subtitleDiv {
@@ -654,8 +669,13 @@ main {
 }
 
 .yellow {
-  color: var(--secondary-color);
-  
+  color: var(--secondary-color) !important;
+}
+.yellowStrong {
+  font-size: 1.9em;
+  color: var(--secondary-color) !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2), 1px -1px 0 rgba(0, 0, 0, 0.2), -1px 1px 0 rgba(0, 0, 0, 0.2), -1px -1px 0 rgba(0, 0, 0, 0.2), 1px 0px 0 rgba(0, 0, 0, 0.2), 0px 1px 0 rgba(0, 0, 0, 0.2), -1px 0px 0 rgba(0, 0, 0, 0.2), 0px -1px 0 rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
+
 }
 
 
