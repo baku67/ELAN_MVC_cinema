@@ -1006,7 +1006,22 @@ table {
   margin-top: 20px;
 } */
 
-#chevronCollapse {
+#chevronCollapseMovie {
+  margin: 0 15px;
+}
+#chevronCollapseActor {
+  margin: 0 15px;
+}
+#chevronCollapseDir {
+  margin: 0 15px;
+}
+#chevronCollapseGenre {
+  margin: 0 15px;
+}
+#chevronCollapseRole {
+  margin: 0 15px;
+}
+#chevronCollapseCasting {
   margin: 0 15px;
 }
 .rotateChevronShow {
@@ -1065,7 +1080,36 @@ table {
     max-height: 0px;
     overflow: hidden;
 }
-
+#formActorContent {
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+  max-height: 0px;
+  overflow: hidden;
+  /* padding: 15px; */
+}
+#formDirContent {
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+  max-height: 0px;
+  overflow: hidden;
+  /* padding: 15px; */
+}
+#formGenreContent {
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+  max-height: 0px;
+  overflow: hidden;
+  /* padding: 15px; */
+}
+#formRoleContent {
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+  max-height: 0px;
+  overflow: hidden;
+  /* padding: 15px; */
+}
+#formCastingContent {
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+  max-height: 0px;
+  overflow: hidden;
+  /* padding: 15px; */
+}
 
 /* Rating stars */
 .rating {

@@ -28,6 +28,20 @@
                 ORDER BY actorName ASC
             ");
 
+            $requestMovieSelect = $pdo->query("
+                SELECT movie_id, movie_title, YEAR(movie_frenchPublishDate) AS 'sortie', movie_length, CONCAT(person_firstName, ' ', person_lastName) AS 'réalisateur', movie_synopsis, movie_rating, movie_frenchPublishDate, movie_imgUrl
+                FROM movie m
+                INNER JOIN director d ON m.director_id = d.director_id
+                INNER JOIN person p ON p.person_id = d.person_id
+                ORDER BY sortie DESC
+            ");
+
+            $requestRoleSelect = $pdo->query("
+                SELECT role_id, role_name
+                FROM role
+                ORDER BY role_name ASC
+            ");
+
 
             require "view/admin.php";
 

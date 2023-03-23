@@ -86,6 +86,32 @@
         // }
 
 
+        public function addCasting() {
+            $pdo = Connect::seConnecter();
+
+            // $actorId = filter_input(INPUT_POST, "actorSelect", FILTER_SANITIZE_NUMBER_INT);
+            // $movieId = filter_input(INPUT_POST, "movieSelect", FILTER_SANITIZE_NUMBER_INT);
+            // $roleId = filter_input(INPUT_POST, "roleSelect", FILTER_SANITIZE_NUMBER_INT);
+            $movieId = $_POST["movieSelect"];
+            $roleId = $_POST["roleSelect"];
+            // $_POST["actorSelect"] non identifié pour aucune raison (exactement pareil que les 2 autres)
+            $actorId = $_POST["actorSelect"];
+            // $actorId = 1;
+
+
+            $requestAddCasting = $pdo->prepare("
+                INSERT INTO casting (movie_id, actor_id, role_id) VALUES (:actorId, :movieId, :roleId)
+            ");
+            $requestAddCasting->execute([
+                "actorId" => $actorId,
+                "movieId" => $movieId,
+                "roleId" => $roleId
+            ]);
+
+            header("Location: index.php?action=listMovies");
+        }
+
+
 
         public function movieDetails(int $movieId) {
             $pdo = Connect::seConnecter();

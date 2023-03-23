@@ -94,6 +94,10 @@
                 $ctrlDirector->addDirector();
                 break;
 
+            case "addCasting":
+                $ctrlMovies->addCasting();
+                break;
+
             case "search":
                 break;
 

@@ -83,6 +83,14 @@
         flex-direction: column;
     }
 
+    #movieListGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(1, 1fr);
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+    }
+
 
     .movieDetailGrid {
         display: grid;
