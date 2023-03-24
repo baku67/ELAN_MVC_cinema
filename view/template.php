@@ -73,9 +73,9 @@
 
         <main>
             <div id="searchDiv">
-                <form action="search" method="post">
+                <form action="index.php?action=search" method="post">
                     <i id="searchIcon" class="fa-solid fa-magnifying-glass"></i>
-                    <input id="inputSearch" type="text" placeholder="Entrez un film, un acteur ou un réalisateur...">
+                    <input id="inputSearch" name="inputSearch" type="text" placeholder="Entrez un film, un acteur ou un réalisateur...">
                     <input id="searchSubmit" type="submit" value="Go!">
                 </form>
             </div>

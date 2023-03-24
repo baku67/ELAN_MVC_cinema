@@ -98,13 +98,14 @@
                 $ctrlMovies->addCasting();
                 break;
 
-            case "search":
-                break;
 
             case "admin":
                 $ctrlAdmin->getAdmin();
                 break;
-    
+
+            case "search":
+                $ctrlHome->search();
+                break;
 
             // case "removeFilter":
             //     $ctrlMovies->removeFilter($filterId);

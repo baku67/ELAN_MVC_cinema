@@ -29,4 +29,41 @@
             require 'view/homepage.php';
         }
 
+        public function search() {
+
+            $searchInput = htmlspecialchars($_POST["inputSearch"]);
+
+            $pdo = Connect::seConnecter();
+            $searchQuery = $pdo->prepare("
+                SELECT movie_id AS id, movie_title AS title, m.type, m.movie_imgUrl AS img
+                FROM movie m 
+                WHERE m.movie_title LIKE :searchString
+                GROUP BY m.movie_id
+                UNION
+                SELECT actor_id AS id, CONCAT(p.person_firstName, p.person_lastName) AS title, a.type, p.person_imgUrl AS img
+                FROM actor a
+                INNER JOIN person p ON p.person_id = a.person_id
+                WHERE p.person_firstName LIKE :searchString
+                OR p.person_lastName LIKE :searchString
+                GROUP BY a.actor_id
+                UNION 
+                SELECT director_id AS id, CONCAT(p.person_firstName, p.person_lastName) AS title, d.type, p.person_imgUrl AS img
+                FROM director d
+                INNER JOIN person p ON p.person_id = d.person_id
+                WHERE p.person_firstName LIKE :searchString
+                OR p.person_lastName LIKE :searchString
+                GROUP BY d.director_id
+            ");
+                // Search avec roles:
+                    // UNION 
+                    // SELECT role_id AS id, role_name AS title, r.type
+                    // FROM role r
+                    // WHERE r.role_name LIKE :searchString
+            $searchQuery->execute([
+                "searchString" => "%" . $searchInput . "%"
+            ]);
+
+            require 'view/searchResult.php';
+        }
+
     }

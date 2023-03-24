@@ -1,9 +1,9 @@
-Adapter les forms admin
-Responsive
-intégrer iframe a portfolio
+*** Responsive (Important pour iframe portFolio) ***
 
-Pour acteurs:
-mettre 2-3 inputs select et possibiliter d'en ajouter (bouton +)
-img inside select (pour les forms admin): https://jqueryui.com/selectmenu/#custom_render
+Bug SQL ajout casting: Foreign key constraint fail 
 
-Pour réalisateur: même select mais 1 input
+GRID resultatSearch responsiv et count resultats avec (s)
+    type resultatCards: adapter movie/person
+    bg title + hovers
+
+

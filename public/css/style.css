@@ -4,6 +4,7 @@
 }
 
 body {
+  background-color: #f4f0f0;
   margin: 0;
   animation: fadeIn 0.5s ease forwards;
 }
@@ -27,6 +28,48 @@ li {
   list-style: none;
 }
 
+
+
+.searchCard {
+  width: 200px;
+  margin: auto;
+  overflow: hidden;
+}
+.searchCardImg {
+  width: 200px;
+  height: 265px;
+}
+
+.gridSearchResults {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  width: 69%;
+  margin: 0 auto;
+}
+.gridSearchResults a {
+  width: 200px;
+  margin: 20px auto;
+}
+
+.searchCard {
+  position: relative;
+  width: 200px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+}
+
+.searchCardType {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 1px 7px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
 
 .actorDetailsMovieList {
   display: inline-flex;
