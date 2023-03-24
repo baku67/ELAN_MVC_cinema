@@ -38,6 +38,40 @@ li {
 .searchCardImg {
   width: 200px;
   height: 265px;
+  transition: all 0.4s;
+}
+.searchCard:hover .searchCardImg {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+.searchCardTitleMovie {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0.7em 0;
+  font-weight: 500;
+  font-size: 108%;
+  transition: all 0.5s;
+}
+.searchCardTitlePerson {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0.7em 0;
+  font-weight: 500;
+  font-size: 108%;
+  transition: all 0.5s;
+}
+.searchCard:hover .searchCardTitleMovie {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+.searchCard:hover .searchCardTitlePerson {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+.searchCardImgWrapper {
+  width: 200px;
+  height: 265px;
+  overflow: hidden;
 }
 
 .gridSearchResults {
@@ -62,13 +96,25 @@ li {
   border-radius: 5px;
 }
 
-.searchCardType {
+.searchCardTypeMovie {
   position: absolute;
   top: 0px;
   right: 0px;
   padding: 1px 7px;
   background-color: var(--secondary-color);
   color: var(--primary-color);
+
+  border-bottom-left-radius: 5px;
+}
+.searchCardTypePerson {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 1px 7px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+
+  border-bottom-left-radius: 5px;
 }
 
 .actorDetailsMovieList {

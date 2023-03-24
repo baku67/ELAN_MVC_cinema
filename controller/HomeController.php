@@ -40,14 +40,14 @@
                 WHERE m.movie_title LIKE :searchString
                 GROUP BY m.movie_id
                 UNION
-                SELECT actor_id AS id, CONCAT(p.person_firstName, p.person_lastName) AS title, a.type, p.person_imgUrl AS img
+                SELECT actor_id AS id, CONCAT(p.person_firstName, ' ', p.person_lastName) AS title, a.type, p.person_imgUrl AS img
                 FROM actor a
                 INNER JOIN person p ON p.person_id = a.person_id
                 WHERE p.person_firstName LIKE :searchString
                 OR p.person_lastName LIKE :searchString
                 GROUP BY a.actor_id
                 UNION 
-                SELECT director_id AS id, CONCAT(p.person_firstName, p.person_lastName) AS title, d.type, p.person_imgUrl AS img
+                SELECT director_id AS id, CONCAT(p.person_firstName, ' ', p.person_lastName) AS title, d.type, p.person_imgUrl AS img
                 FROM director d
                 INNER JOIN person p ON p.person_id = d.person_id
                 WHERE p.person_firstName LIKE :searchString

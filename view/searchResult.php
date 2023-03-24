@@ -48,9 +48,21 @@
 ?>
         <a href="index.php?action=<?= $actionDetailType ?>">
             <div class="searchCard">
-                <img class="searchCardImg" src="<?= $result["img"] ?>" alt="">
-                <p><?= $result["title"] ?></p>
-                <div class="searchCardType"><?= ucfirst($result["type"]) ?></div>
+                <?php
+                    if ($result["type"] == "movie") {
+                        $typeClass = "searchCardTypeMovie";
+                        $titleClass = "searchCardTitleMovie";
+                    }
+                    else if (($result["type"] == "actor") || ($result["type"] == "director")) {
+                        $typeClass = "searchCardTypePerson";
+                        $titleClass = "searchCardTitlePerson";
+                    }
+                ?>
+                <div class="searchCardImgWrapper">
+                    <img class="searchCardImg" src="<?= $result["img"] ?>" alt="">
+                </div>
+                <p class="<?= $titleClass ?>" ><?= $result["title"] ?></p>
+                <div class="<?= $typeClass ?>"><?= ucfirst($result["type"]) ?></div>
             </div>
         </a>
 
