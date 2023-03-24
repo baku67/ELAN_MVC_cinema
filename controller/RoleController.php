@@ -23,7 +23,7 @@
 
 
                 $_SESSION["success"] = "Le role " . $roleName  . " a bien été ajouté";
-                header('Location: index.php');
+                header('Location: index.php?action=admin');
 
             }
         }

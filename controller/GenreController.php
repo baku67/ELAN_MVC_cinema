@@ -48,7 +48,7 @@
 
 
                 $_SESSION["success"] = "Le genre " . $genreTitle  . " a bien été ajouté";
-                header('Location: index.php');
+                header('Location: index.php?action=admin');
 
             }
         }

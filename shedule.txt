@@ -1,9 +1,12 @@
 *** Responsive (Important pour iframe portFolio) ***
 
-Bug SQL ajout casting: Foreign key constraint fail 
+(!) Bug SQL ajout casting: Foreign key constraint fail  (Testé avec nouvelles données propres et dans l'ordre)
+Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`basile_cinema`.`casting`, CONSTRAINT `FK_casting_movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`)) 
 
-GRID resultatSearch responsiv et count resultats avec (s)
-    type resultatCards: adapter movie/person
-    bg title + hovers
+(!) Lors d'ajout acteur/Réal: les lastAddsCards label montrent "person" au lieu de "actor" ou "director" (ET URL details bugué)
 
+
+TODO: Uploads des img ! 
+
+Vérifier toutes les Redirections sur pages listing apres forms
 
