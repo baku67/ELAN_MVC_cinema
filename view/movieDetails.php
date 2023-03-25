@@ -27,7 +27,7 @@
         <div class="underlineElem"></div>
     </div>
 
-    <a class="backButton" href="javascript:history.go(-1)">Retour</a>
+    <!-- <a class="backButton" href="javascript:history.go(-1)">Retour</a> -->
 
     
 

@@ -70,14 +70,15 @@
                 $birthDate = $_POST["actorBirthDate"];
 
                 $addPersonRequest = $pdo->prepare("
-                    INSERT INTO person (person_firstName, person_lastName, person_gender, person_birthDate) 
-                    VALUES (:firstName, :lastName, :gender, :birthDate)
+                    INSERT INTO person (person_firstName, person_lastName, person_gender, person_birthDate, type) 
+                    VALUES (:firstName, :lastName, :gender, :birthDate, :type)
                 ");
                 $addPersonRequest->execute([
                     "firstName" => $firstName,
                     "lastName" => $lastName,
                     "gender" => $gender,
                     "birthDate" => $birthDate,
+                    "type" => "actor"
                 ]);
 
                 $last_insert_id = $pdo->lastInsertId();

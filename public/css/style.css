@@ -235,6 +235,7 @@ main {
     margin-bottom: 40px;
 
     position: relative;
+
 }
 
 .backButton {
@@ -435,7 +436,7 @@ main {
   position: relative;
   width: 60%;
   padding: 5px 25px;
-  border: 2px solid rgba(0, 6, 58, 0.5);
+  border: 2px solid rgba(0, 6, 58, 0.3);
   border-radius: 100px;
   transition: all 0.5s;
   /* margin-top: 10px; */
@@ -444,6 +445,12 @@ main {
   border: 2px solid rgba(0, 6, 58, 1);
 
 }
+
+#inputSearch::placeholder {
+  /* font-size:85%; */
+  opacity: 0.8;
+}
+
 
 #gridHomepage {
   display: grid; 

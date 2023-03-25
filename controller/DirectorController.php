@@ -66,24 +66,26 @@
                 $birthDate = $_POST["dirBirthDate"];
 
                 $addPersonRequest = $pdo->prepare("
-                    INSERT INTO person (person_firstName, person_lastName, person_gender, person_birthDate) 
-                    VALUES (:firstName, :lastName, :gender, :birthDate)
+                    INSERT INTO person (person_firstName, person_lastName, person_gender, person_birthDate, type)
+                    VALUES (:firstName, :lastName, :gender, :birthDate, :type)
                 ");
                 $addPersonRequest->execute([
                     "firstName" => $firstName,
                     "lastName" => $lastName,
                     "gender" => $gender,
                     "birthDate" => $birthDate,
+                    "type" => "director"
                 ]);
 
                 $last_insert_id = $pdo->lastInsertId();
 
                 $addDirectorRequest = $pdo->prepare("
-                    INSERT INTO director (person_id) 
-                    VALUES (:personId)
+                    INSERT INTO director (person_id, type) 
+                    VALUES (:personId, :type)
                 ");
                 $addDirectorRequest->execute([
                     "personId" => $last_insert_id,
+                    "type" => "director"
                 ]);
 
 

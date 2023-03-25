@@ -11,6 +11,13 @@
         scrollbar-width: none;  /* Firefox */
     }
 
+    main {
+        overflow: hidden;
+    }
+    .actorDetailContainer {
+        width: 90%;
+    }
+
     #gridHomepage {
         display: grid;
         grid-template-columns: 1fr;
@@ -65,10 +72,50 @@
     .titleSvgContainer {
         display: none;
     }
-    
+
+    #searchDiv {
+        padding: 4px 0;
+    }
     #searchDiv form {
         width: 90%;
     }
+    #inputSearch {
+        position: relative;
+        width: 80%;
+        padding: 5px 25px;
+        border: 2px solid rgba(0, 6, 58, 0.3);
+        border-radius: 6px;
+        transition: all 0.5s;
+    }
+    #searchSubmit {
+        position: absolute;
+        top: 1px;
+        border-width: 0;
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        transform: translateX(-42px);
+        background-color: var(--primary-color);
+        color: white;
+        cursor: pointer;
+        transition: all 0.4s;
+    }
+    #inputSearch::placeholder {
+        font-size:85%;
+        opacity: 0.8;
+    }
+
+    #movieFilterGenreList a {
+        padding: 5px 5px;
+    }
+
+    .genreImg {
+        display: none;
+    }
+
+
 
     .actorsListGrid {
         display: grid;

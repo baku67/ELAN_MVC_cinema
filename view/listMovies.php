@@ -21,7 +21,7 @@
                     foreach($genreList as $genre) {
                     ?>
                         <li>
-                            <a style="color:<?= $genre["genreColor"] ?>; border: 2px solid <?= $genre["genreColor"] ?>" href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?><img class="genreImg" src="<?= $genre["genreImgUrl"]?>"></a>
+                            <a class="genreLink" style="color:white; background-color:<?= $genre["genreColor"] ?>; border: 2px solid <?= $genre["genreColor"] ?>" href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?><img class="genreImg" src="<?= $genre["genreImgUrl"]?>"></a>
                         </li>
                     <?php
                     }
@@ -40,7 +40,7 @@
                         // if(!in_array($genre["movieGenre_id"], $_SESSION["filters"][0])) {
                         ?>
                             <li>
-                                <a href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?><img class="genreImg" src="<?= $genre["genreImgUrl"]?>"></a>
+                                <a class="genreLink" href="index.php?action=listMoviesFiltered&filterId=<?= $genre["movieGenre_id"] ?>&filterLabel=<?= $genre["movieGenre_label"] ?>"><?= ucfirst($genre["movieGenre_label"]) ?><img class="genreImg" src="<?= $genre["genreImgUrl"]?>"></a>
                             </li>
                         <?php
                         // }

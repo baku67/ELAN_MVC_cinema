@@ -28,7 +28,7 @@
     <div class="actorDetailContainer">
 
         
-        <a class="backButton" href="javascript:history.go(-1)">Retour</a>
+        <!-- <a class="backButton" href="javascript:history.go(-1)">Retour</a> -->
 
 
         <div class="actorDetailSection1">

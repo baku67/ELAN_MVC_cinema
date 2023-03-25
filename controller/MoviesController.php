@@ -198,8 +198,8 @@
 
                 $pdo = Connect::seConnecter();
                 $addMovieRequest = $pdo->prepare("
-                    INSERT INTO movie (movie_title, movie_frenchPublishDate, movie_length, movie_synopsis, movie_rating, movie_imgUrl, director_id) 
-                    VALUES (:movieTitle, :moviePublishDate, :movieLength, :movieSynopsis, :movieRating, :movieImgUrl, :directorId)
+                    INSERT INTO movie (movie_title, movie_frenchPublishDate, movie_length, movie_synopsis, movie_rating, movie_imgUrl, director_id, type) 
+                    VALUES (:movieTitle, :moviePublishDate, :movieLength, :movieSynopsis, :movieRating, :movieImgUrl, :directorId, :type)
                 ");
                 // Données de test à remplacer par les var
                 $addMovieRequest->execute([
@@ -210,6 +210,7 @@
                     "movieRating" => $stars,
                     "movieImgUrl" => $fileName,
                     "directorId" => $movieDirector,
+                    "type" => "movie"
                 ]);
 
                 // Récupération de l'id du movie tout juste inséré

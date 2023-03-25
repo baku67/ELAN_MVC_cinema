@@ -19,8 +19,13 @@
                 SELECT m.movie_id AS id, m.movie_title AS title, movie_frenchPublishDate AS publishDate, movie_imgUrl AS imgUrl, create_Time, m.type
                 FROM movie m
                 UNION
-                SELECT p.person_id AS id, p.person_firstName AS title, person_birthDate AS publishDate, person_imgUrl AS imgUrl, create_Time, p.type
+                SELECT d.director_id AS id, CONCAT(p.person_firstName, ' ',p.person_lastName) AS title, person_birthDate AS publishDate, person_imgUrl AS imgUrl, create_Time, p.type
                 FROM person p
+                INNER JOIN director d ON d.person_id = p.person_id
+                UNION
+                SELECT a.actor_id AS id, CONCAT(p.person_firstName, ' ',p.person_lastName) AS title, person_birthDate AS publishDate, person_imgUrl AS imgUrl, create_Time, p.type
+                FROM person p
+                INNER JOIN actor a ON a.person_id = p.person_id
                 ORDER BY create_time DESC
                 LIMIT 6
             ");
