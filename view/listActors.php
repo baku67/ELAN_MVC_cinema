@@ -12,7 +12,7 @@
         foreach ($request->fetchAll() as $actor) {
         ?>  
             <a href="index.php?action=actorDetails&id=<?= $actor['actor_id'] ?>" class="actorsCard">
-                <li>
+                <li class="actorCard">
                     <div class="personCardImgWrapper">
                         <img class="personCardImg" src="<?= $actor['person_imgUrl'] ?>">
                     </div>

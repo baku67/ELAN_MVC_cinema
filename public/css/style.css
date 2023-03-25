@@ -288,7 +288,20 @@ main {
 
   margin: 0 auto;
 
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+  transition: all 0.7s;
+}
+.actorCard {
+  background-color: var(--secondary-color);
   transition: all 0.5s;
+}
+.actorCard:hover .personCardImg {
+  clip-path: polygon(0 0, 135% 0, 0% 145%, 0% 0%);
+}
+
+.actorCardName {
+  background-color: #f4f0f0;
 }
 
 .personCardImgWrapper {
@@ -360,8 +373,8 @@ main {
 }
 
 .actorsCard:hover .actorCardName {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .actorCardName {
@@ -375,6 +388,7 @@ main {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 
+  /* font-size: 3.5vw; */
 }
 
 
@@ -642,6 +656,12 @@ main {
   display: inline-flex;
 
   overflow: hidden;
+
+  border-bottom: 3px solid rgb(0, 6, 58, 0.7);
+}
+.lastAddCard:hover  {
+  /* border-bottom: 3px solid rgb(0, 6, 58, 1); */
+
 }
 .lastAddImgWrapper {
   width: 140px;
@@ -687,7 +707,7 @@ main {
   background-color: #00063a10;
 }
 .lastAddCard:hover .lastAddImgWrapper {
-  filter: drop-shadow(0px 0px 4px black);
+  /* filter: drop-shadow(0px 0px 4px black); */
 }
 .lastAddCard:hover .lastAddTitle {
     text-decoration: underline;
@@ -705,13 +725,25 @@ main {
 }
 
 .newsMovie {
-  border-right: 3px solid var(--primary-color);
+  border-right: 5px solid var(--primary-color);
 }
 .newsPerson {
-  border-right: 3px solid var(--secondary-color);
+  border-right: 5px solid var(--secondary-color);
 
 }
 
+.borderbottomPerson {
+  border-bottom: 3px solid rgb(254, 204, 2, 0.5);
+}
+.lastAddCard:hover .borderbottomPerson {
+  border-bottom: 3px solid rgb(254, 204, 2, 1);
+}
+.borderbottomMovie {
+  border-bottom: 3px solid rgb(0, 6, 58, 0.5);
+}
+.lastAddCard:hover .borderbottomMovie {
+  border-bottom: 3px solid rgb(0, 6, 58, 1);
+}
 
 .filArianneDiv {
   width: 60%;
@@ -801,9 +833,26 @@ main {
   background-color: #fecc02e5;
   color: #00063a;
 }
+/* .lastAddCard:hover {
+  border-top: 2px solid var(--secondary-color);
+  border-right: 2px solid var(--secondary-color);
+  border-left: 2px solid var(--secondary-color);
+} */
+.lastAddCard:hover .newsPerson {
+  border-right: 40px solid var(--secondary-color);
+}
+.lastAddCard:hover .newsMovie {
+  border-right: 40px solid var(--primary-color);
+}
 
 
+.actorCard {
+  border-bottom: 2px solid rgb(0, 0, 0, 0.7);
+}
 
+.directorCard {
+  border-bottom: 2px solid rgb(0, 0, 0, 0.7);
+}
 
 .movieDetailGrid {
   display: grid;
@@ -905,6 +954,7 @@ main {
 .actorDetailsImg {
   width: 160px;
   border-radius: 6px;
+  border-bottom: 4px solid var(--primary-color);
 }
 .actorDetailContainer {
   width: 80%;
@@ -918,6 +968,10 @@ main {
   margin-left:50px;
 }
 
+.borderDirector {
+  border-top: 2px solid black;
+  border-right: 1px solid black;
+}
 
 .movieContentWrapper {
   position: relative;

@@ -54,16 +54,22 @@
                             $style = "newsMovie";
                             $styleLabel = "styleMovieLabel";
                             $actionDetailUrl = "movie";
+                            $borderDirector = "";
+                            $borderbottom = "borderbottomMovie";
                         }
                         else if ($lastAdd["type"] == "actor") {
                             $style = "newsPerson";
                             $styleLabel = "stylePersonLabel";
                             $actionDetailUrl = "actor";
+                            $borderDirector = "";
+                            $borderbottom = "borderbottomPerson";
                         }
                         else if ($lastAdd["type"] == "director") {
                             $style = "newsPerson";
                             $styleLabel = "stylePersonLabel";
                             $actionDetailUrl = "director";
+                            $borderDirector = "borderDirector";
+                            $borderbottom = "borderbottomPerson";
                         }
                         else {
                             $style = "HS";
@@ -71,8 +77,8 @@
                     ?>
                         <!-- Englober avec des <a href="detail"> oula -->
                         <a href="index.php?action=<?= $actionDetailUrl ?>Details&id=<?= $lastAdd["id"] ?>">
-                            <li class="lastAddCard">
-                                <p class="lastAddType <?= $styleLabel ?>"><?= ucfirst($lastAdd["type"]) ?></p>
+                            <li class="lastAddCard <?= $borderbottom ?>">
+                                <p class="lastAddType <?= $styleLabel ?> <?= $borderDirector ?>"><?= ucfirst($lastAdd["type"]) ?></p>
                                 <!-- Ptit label/tag acteur/film meme color et voir pour le bg gradient hover color -->
                                 <div class="lastAddImgWrapper <?= $style ?>">
                                     <img class="lastAddImg" src="<?= $lastAdd["imgUrl"] ?>">

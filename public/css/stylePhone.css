@@ -119,22 +119,39 @@
 
     .actorsListGrid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
         grid-column-gap: 15px;
         grid-row-gap: 25px;
         width: 92%;
         margin: 0 auto;
     }
+    .actorsCard {
+        width: 100px;
+    }
+    .personCardImgWrapper {
+        width: 100px;
+        height: 124px;
+    }
+    .personCardImg {
+        width: 100px;
+        height: 140px;
+    }
+    .actorCardName {
+        font-size: 3.5vw;
+    }
 
     .directorsListGrid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
         grid-column-gap: 15px;
         grid-row-gap: 25px;
         width: 92%;
         margin: 0 auto;
+    }
+    .directorCardName {
+        font-size: 3.5vw;
     }
 
     .actorDetailsMovieList {

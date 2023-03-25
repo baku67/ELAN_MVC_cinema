@@ -13,7 +13,7 @@
         foreach ($request->fetchAll() as $dir) {
         ?>  
             <a href="index.php?action=directorDetails&id=<?= $dir['director_id'] ?>" class="actorsCard">
-                <li>
+                <li class="directorCard">
                     <div class="personCardImgWrapper">
                         <img class="personCardImg" src="<?= $dir['person_imgUrl'] ?>">
                     </div>

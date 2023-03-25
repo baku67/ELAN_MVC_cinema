@@ -23,22 +23,24 @@ USE `basile_cinema`;
 CREATE TABLE IF NOT EXISTS `actor` (
   `actor_id` int NOT NULL AUTO_INCREMENT,
   `person_id` int DEFAULT NULL,
+  `type` varchar(50) DEFAULT 'actor',
   PRIMARY KEY (`actor_id`),
   KEY `FK_actor_person` (`person_id`),
   CONSTRAINT `FK_actor_person` FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table basile_cinema.actor : ~7 rows (environ)
+-- Listage des données de la table basile_cinema.actor : ~9 rows (environ)
 DELETE FROM `actor`;
-INSERT INTO `actor` (`actor_id`, `person_id`) VALUES
-	(1, 1),
-	(2, 2),
-	(3, 3),
-	(4, 6),
-	(5, 7),
-	(7, 11),
-	(8, 12),
-	(10, 16);
+INSERT INTO `actor` (`actor_id`, `person_id`, `type`) VALUES
+	(1, 1, 'actor'),
+	(2, 2, 'actor'),
+	(3, 3, 'actor'),
+	(4, 6, 'actor'),
+	(5, 7, 'actor'),
+	(7, 11, 'actor'),
+	(8, 12, 'actor'),
+	(10, 16, 'actor'),
+	(12, 20, 'actor');
 
 -- Listage de la structure de table basile_cinema. casting
 CREATE TABLE IF NOT EXISTS `casting` (
@@ -53,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `casting` (
   CONSTRAINT `FK_casting_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table basile_cinema.casting : ~6 rows (environ)
+-- Listage des données de la table basile_cinema.casting : ~9 rows (environ)
 DELETE FROM `casting`;
 INSERT INTO `casting` (`movie_id`, `actor_id`, `role_id`) VALUES
 	(1, 1, 2),
@@ -63,25 +65,29 @@ INSERT INTO `casting` (`movie_id`, `actor_id`, `role_id`) VALUES
 	(4, 8, 7),
 	(4, 1, 5),
 	(16, 10, 9),
-	(15, 10, 9);
+	(15, 10, 9),
+	(3, 1, 2),
+	(2, 1, 4);
 
 -- Listage de la structure de table basile_cinema. director
 CREATE TABLE IF NOT EXISTS `director` (
   `director_id` int NOT NULL AUTO_INCREMENT,
   `person_id` int DEFAULT NULL,
+  `type` varchar(50) DEFAULT 'director',
   PRIMARY KEY (`director_id`),
   KEY `FK_director_person` (`person_id`),
   CONSTRAINT `FK_director_person` FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table basile_cinema.director : ~4 rows (environ)
+-- Listage des données de la table basile_cinema.director : ~6 rows (environ)
 DELETE FROM `director`;
-INSERT INTO `director` (`director_id`, `person_id`) VALUES
-	(1, 4),
-	(2, 5),
-	(3, 9),
-	(4, 10),
-	(6, 17);
+INSERT INTO `director` (`director_id`, `person_id`, `type`) VALUES
+	(1, 4, 'director'),
+	(2, 5, 'director'),
+	(3, 9, 'director'),
+	(4, 10, 'director'),
+	(6, 17, 'director'),
+	(7, 19, 'director');
 
 -- Listage de la structure de table basile_cinema. movie
 CREATE TABLE IF NOT EXISTS `movie` (
@@ -98,17 +104,18 @@ CREATE TABLE IF NOT EXISTS `movie` (
   PRIMARY KEY (`movie_id`),
   KEY `movie_director` (`director_id`),
   CONSTRAINT `movie` FOREIGN KEY (`director_id`) REFERENCES `director` (`director_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table basile_cinema.movie : ~6 rows (environ)
+-- Listage des données de la table basile_cinema.movie : ~7 rows (environ)
 DELETE FROM `movie`;
 INSERT INTO `movie` (`movie_id`, `movie_title`, `movie_frenchPublishDate`, `movie_length`, `movie_synopsis`, `movie_rating`, `movie_imgUrl`, `director_id`, `create_Time`, `type`) VALUES
 	(1, 'Titanic', '1997-12-05', 195, 'En septembre 1996, Brock Lovett est le coordinateur d\'une équipe qui fouille méticuleusement l\'épave du célèbre Titanic, paquebot géant réputé insubmersible qui connut pourtant un destin tragique. Lovett espère mettre la main sur le Cœur de l\'Océan, un collier de diamants unique à la valeur inestimable, porté par Louis XVI, dont la découverte lui apporterait la gloire (ce bijou, en réalité fictif, est inspiré du diamant bleu de la Couronne). Lors de sa sixième plongée en sous-marin, il remonte des profondeurs un coffre-fort dont il espère qu\'il contient le précieux objet. Mais il n\'y trouve que quelques vieux billets de banque et un dessin représentant une jeune femme nue portant le fameux bijou en pendentif.', 4, './uploads/moviesImg/titanic.jpg', 2, '2023-03-22 00:25:50', 'movie'),
-	(2, 'Full Metal Jacket', '1987-06-10', 116, 'Le film est centré sur le personnage de J.T. Davis, surnommé « Joker » (« Guignol » dans la version française), un jeune engagé volontaire incorporant le corps des Marines des États-Unis à la fin des années 1960, à l\'époque de la guerre du Viêt Nam.', 5, './uploads/moviesImg/fullMetalJacket.png', 1, '2023-03-21 00:25:50', 'movie'),
+	(2, 'Full Metal Jacket', '1987-06-10', 116, 'Le film est centré sur le personnage de J.T. Davis, surnommé « Joker » (« Guignol » dans la version française), un jeune engagé volontaire incorporant le corps des Marines des États-Unis à la fin des années 1960, à l\'époque de la guerre du Viêt Nam.', 5, './uploads/moviesImg/fullMetalJacket.jpg', 1, '2023-03-21 00:25:50', 'movie'),
 	(3, 'La Plage', '2000-01-01', 115, 'Richard est un jeune Américain parti en Thaïlande pour vivre une expérience en marge des circuits touristiques. Il est vite déçu de ne trouver que des Occidentaux en mal de sensations dans le quartier des routards de Kaosan. Une nuit, à l\'hôtel, il rencontre Daffy, un homme fou qui lui parle d\'une île légendaire et paradisiaque où vivrait une communauté repliée sur elle-même, en communion avec la nature.', 3, './uploads/moviesImg/laPlage.jpg', 4, '2023-03-20 00:25:50', 'movie'),
 	(4, 'Shutter Island', '2010-02-01', 130, 'Shutter Island est un thriller psychologique américain réalisé par Martin Scorsese et sorti en 2010. C\'est l\'adaptation du roman du même nom de l\'écrivain Dennis Lehane publié en 2003.', 4, './uploads/moviesImg/shutterIsland.jpg', 3, '2023-03-19 00:25:50', 'movie'),
 	(15, 'Inglorious Basterds', '2013-03-21', 152, 'In 1941, SS-Standartenführer Hans Landa interrogates French farmer Perrier LaPadite as to the whereabouts of a Jewish family, the Dreyfuses. Landa suspects the LaPadites are hiding the Dreyfuses under their floorboards; LaPadite tearfully confirms it in order to spare his own family. The soldiers shoot through the floorboards, killing all but Shosanna Dreyfus. Landa, mockingly, spares Shosanna\'s life and lets her escape.', 4, './uploads/moviesImg/ingloriousBasterds.jpg', 6, '2023-03-17 00:25:50', 'movie'),
-	(16, 'DjangoUnchained', '2015-02-26', 126, 'In 1858 Texas, brothers Ace and Dicky Speck drive a group of shackled black slaves on foot. Among them is Django, sold off and separated from his wife Broomhilda von Shaft, a house slave who speaks German and English. They are stopped by Dr. King Schultz, a German dentist-turned-bounty hunter seeking to buy Django for his knowledge of the three outlaw Brittle brothers, overseers at the plantation of Django\'s previous owner and for whom Schultz has a warrant. When Ace refuses to sell Django to Schultz and cocks his gun, Schultz kills him and shoots Dicky\'s horse in order to pin him to the ground; he advises the freed slaves to take the opportunity for revenge. Schultz offers Django his freedom and $75 in exchange for help tracking down the Brittles.', 3, './uploads/moviesImg/djangoUnchained.jpg', 6, '2023-03-15 00:25:50', 'movie');
+	(16, 'Django Unchained', '2015-02-26', 126, 'In 1858 Texas, brothers Ace and Dicky Speck drive a group of shackled black slaves on foot. Among them is Django, sold off and separated from his wife Broomhilda von Shaft, a house slave who speaks German and English. They are stopped by Dr. King Schultz, a German dentist-turned-bounty hunter seeking to buy Django for his knowledge of the three outlaw Brittle brothers, overseers at the plantation of Django\'s previous owner and for whom Schultz has a warrant. When Ace refuses to sell Django to Schultz and cocks his gun, Schultz kills him and shoots Dicky\'s horse in order to pin him to the ground; he advises the freed slaves to take the opportunity for revenge. Schultz offers Django his freedom and $75 in exchange for help tracking down the Brittles.', 3, './uploads/moviesImg/djangoUnchained.jpg', 6, '2023-03-15 00:25:50', 'movie'),
+	(19, 'Tu ne tueras point', '2016-06-08', 131, 'Desmond Doss, fils d&#039;un ancien soldat de la Premi&egrave;re Guerre mondiale, veut apporter sa pierre &agrave; l&#039;&eacute;difice lorsqu&#039;&eacute;clate la guerre du Pacifique lors de la Seconde Guerre mondiale. En tant qu&#039;objecteur de conscience, il souhaite s&#039;engager mais refuse de tuer ou de porter une arme au combat en raison de ses croyances adventistes. Apr&egrave;s de difficiles n&eacute;gociations avec l&#039;arm&eacute;e, il est affect&eacute; au poste d&#039;auxiliaire sanitaire.\r\n\r\nL&#039;unit&eacute; de Doss est affect&eacute;e &agrave; la 77e division d&#039;infanterie et envoy&eacute;e sur le th&eacute;&acirc;tre de la guerre du Pacifique pour participer &agrave; la bataille d&#039;Okinawa qui se d&eacute;roule sur la colline de Hacksaw Ridge (titre original du film), qui peut se traduire par &laquo; L&#039;ar&ecirc;te de la scie &agrave; m&eacute;taux &raquo;.', 5, './uploads/moviesImg/tuNeTuerasPoint.png', 7, '2023-03-24 16:51:00', 'movie');
 
 -- Listage de la structure de table basile_cinema. moviegenrelist
 CREATE TABLE IF NOT EXISTS `moviegenrelist` (
@@ -120,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `moviegenrelist` (
   CONSTRAINT `FK_moviegenrelist_movie_genre` FOREIGN KEY (`movieGenre_id`) REFERENCES `movie_genre` (`movieGenre_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table basile_cinema.moviegenrelist : ~11 rows (environ)
+-- Listage des données de la table basile_cinema.moviegenrelist : ~12 rows (environ)
 DELETE FROM `moviegenrelist`;
 INSERT INTO `moviegenrelist` (`movie_id`, `movieGenre_id`) VALUES
 	(1, 2),
@@ -135,7 +142,9 @@ INSERT INTO `moviegenrelist` (`movie_id`, `movieGenre_id`) VALUES
 	(4, 5),
 	(15, 6),
 	(15, 3),
-	(16, 1);
+	(16, 1),
+	(19, 1),
+	(19, 6);
 
 -- Listage de la structure de table basile_cinema. movie_genre
 CREATE TABLE IF NOT EXISTS `movie_genre` (
@@ -186,42 +195,46 @@ CREATE TABLE IF NOT EXISTS `person` (
   `create_Time` datetime DEFAULT CURRENT_TIMESTAMP,
   `type` varchar(50) DEFAULT 'person',
   PRIMARY KEY (`person_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table basile_cinema.person : ~13 rows (environ)
+-- Listage des données de la table basile_cinema.person : ~15 rows (environ)
 DELETE FROM `person`;
 INSERT INTO `person` (`person_id`, `person_firstName`, `person_lastName`, `person_gender`, `person_birthDate`, `person_imgUrl`, `create_Time`, `type`) VALUES
-	(1, 'Leonardo', 'Di Caprio', 'homme', '1980-05-25', './uploads/personImg/leonardoDiCaprio.png', '2023-03-22 00:20:03', 'person'),
-	(2, 'Kate', 'Winslet', 'femme', '1975-08-05', './uploads/personImg/kateWingslet.png', '2022-03-22 00:20:03', 'person'),
-	(3, 'Billy', 'Zane', 'homme', '1925-08-05', './uploads/personImg/billyZane.png', '2022-03-22 00:20:03', 'person'),
-	(4, 'Stanley', 'Kubrik', 'homme', '1928-06-26', './uploads/personImg/stanleyKubrik.png', '2022-03-22 00:20:03', 'person'),
-	(5, 'James', 'Cameron', 'homme', '1954-05-16', './uploads/personImg/jamesCameron.png', '2019-03-22 00:20:03', 'person'),
-	(6, 'Matthew', 'Modine', 'homme', '1959-03-29', './uploads/personImg/matthewModine.jpg', '2017-03-22 00:20:03', 'person'),
-	(7, 'Adam', 'Baldwin', 'homme', '1962-02-27', './uploads/personImg/adamBaldwin.jpg', '2016-03-22 00:20:03', 'person'),
-	(9, 'Martin', 'Scorsese', 'homme', '1942-09-17', './uploads/personImg/martinScorsese.png', '2014-03-22 00:20:03', 'person'),
-	(10, 'Danny', 'Boyle', 'homme', '1956-08-20', './uploads/personImg/dannyBoyle.jpg', '2012-03-22 00:20:03', 'person'),
-	(11, 'Gloria', 'Stuart', 'femme', '1910-04-05', './uploads/personImg/gloriaStuart.png', '2007-03-22 00:20:03', 'person'),
-	(12, 'Ben', 'Kingsley', 'homme', '1971-02-02', './uploads/personImg/benKingsley.jpg', '2005-03-22 00:20:03', 'person'),
-	(16, 'Christoph', 'Waltz', 'homme', '1977-03-21', './uploads/personImg/christopheWaltz.jpg', '2002-03-22 00:20:03', 'person'),
-	(17, 'Quentin', 'Tarantino', 'homme', '2092-05-25', './uploads/personImg/quentinTarantino.png', '1999-03-22 00:20:03', 'person');
+	(1, 'Leonardo', 'Di Caprio', 'homme', '1980-05-25', './uploads/personImg/leonardoDiCaprio.png', '2023-03-22 00:20:03', 'actor'),
+	(2, 'Kate', 'Winslet', 'femme', '1975-08-05', './uploads/personImg/kateWingslet.png', '2022-03-22 00:20:03', 'actor'),
+	(3, 'Billy', 'Zane', 'homme', '1925-08-05', './uploads/personImg/billyZane.png', '2022-03-22 00:20:03', 'actor'),
+	(4, 'Stanley', 'Kubrik', 'homme', '1928-06-26', './uploads/personImg/stanleyKubrik.png', '2022-03-22 00:20:03', 'director'),
+	(5, 'James', 'Cameron', 'homme', '1954-05-16', './uploads/personImg/jamesCameron.png', '2019-03-22 00:20:03', 'director'),
+	(6, 'Matthew', 'Modine', 'homme', '1959-03-29', './uploads/personImg/matthewModine.jpg', '2017-03-22 00:20:03', 'actor'),
+	(7, 'Adam', 'Baldwin', 'homme', '1962-02-27', './uploads/personImg/adamBaldwin.jpg', '2016-03-22 00:20:03', 'actor'),
+	(9, 'Martin', 'Scorsese', 'homme', '1942-09-17', './uploads/personImg/martinScorsese.png', '2014-03-22 00:20:03', 'director'),
+	(10, 'Danny', 'Boyle', 'homme', '1956-08-20', './uploads/personImg/dannyBoyle.jpg', '2012-03-22 00:20:03', 'director'),
+	(11, 'Gloria', 'Stuart', 'femme', '1910-04-05', './uploads/personImg/gloriaStuart.png', '2007-03-22 00:20:03', 'actor'),
+	(12, 'Ben', 'Kingsley', 'homme', '1971-02-02', './uploads/personImg/benKingsley.jpg', '2005-03-22 00:20:03', 'actor'),
+	(16, 'Christoph', 'Waltz', 'homme', '1977-03-21', './uploads/personImg/christopheWaltz.jpg', '2002-03-22 00:20:03', 'actor'),
+	(17, 'Quentin', 'Tarantino', 'homme', '2092-05-25', './uploads/personImg/quentinTarantino.png', '1999-03-22 00:20:03', 'director'),
+	(19, 'Mel', 'Gibson', 'homme', '1956-01-03', './uploads/personImg/melGibson.jpg', '2023-03-24 16:44:57', 'director'),
+	(20, 'Andrew', 'Garfield', 'homme', '1983-08-20', './uploads/personImg/andrewGarfield.jpg', '2023-03-24 16:46:50', 'actor');
 
 -- Listage de la structure de table basile_cinema. role
 CREATE TABLE IF NOT EXISTS `role` (
   `role_id` int NOT NULL AUTO_INCREMENT,
   `role_name` varchar(150) DEFAULT NULL,
+  `type` varchar(50) DEFAULT 'role',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table basile_cinema.role : ~6 rows (environ)
+-- Listage des données de la table basile_cinema.role : ~7 rows (environ)
 DELETE FROM `role`;
-INSERT INTO `role` (`role_id`, `role_name`) VALUES
-	(1, 'James Bond'),
-	(2, 'Jack Dawson'),
-	(3, 'Rose DeWitt Bukater'),
-	(4, 'Richard'),
-	(5, 'Teddy Daniels'),
-	(7, 'Docteur Cawley'),
-	(9, 'Le mec là');
+INSERT INTO `role` (`role_id`, `role_name`, `type`) VALUES
+	(1, 'James Bond', 'role'),
+	(2, 'Jack Dawson', 'role'),
+	(3, 'Rose DeWitt Bukater', 'role'),
+	(4, 'Richard', 'role'),
+	(5, 'Teddy Daniels', 'role'),
+	(7, 'Docteur Cawley', 'role'),
+	(9, 'Le mec là', 'role'),
+	(10, 'Desmond T. Doss', 'role');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
