@@ -3,6 +3,13 @@
   --secondary-color: #FECC02;
 }
 
+.isMobile {
+  display: none;
+}
+.isDesktop {
+  display: block;
+}
+
 body {
   background-color: #f4f0f0;
   margin: 0;

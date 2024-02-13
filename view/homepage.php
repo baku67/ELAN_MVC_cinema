@@ -81,7 +81,9 @@
                                 <p class="lastAddType <?= $styleLabel ?> <?= $borderDirector ?>"><?= ucfirst($lastAdd["type"]) ?></p>
                                 <!-- Ptit label/tag acteur/film meme color et voir pour le bg gradient hover color -->
                                 <div class="lastAddImgWrapper <?= $style ?>">
-                                    <img class="lastAddImg" src="<?= $lastAdd["imgUrl"] ?>">
+                                    <!-- Img compressées + redim mobile pour Iframe portfolio: -->
+                                    <img class="lastAddImg isDesktop" src="<?= $lastAdd["imgUrl"] ?>">
+                                    <img class="lastAddImg isMobile" src="<?= $lastAdd["imgUrlMobile"] ?>">
                                 </div>
                                 <p class="lastAddTitle"><?= $lastAdd["title"] ?></p>
                                 <p class="lastAddPubDate"><?= "il y a " . $delaiPublication ?></p>
