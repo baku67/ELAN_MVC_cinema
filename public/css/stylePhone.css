@@ -5,6 +5,10 @@
         display: none;
     }
 
+    body,html {
+        scrollbar-width: none;
+    }
+
     .isMobile {
         display: block;
     }
